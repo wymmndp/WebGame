@@ -1,0 +1,238 @@
+body {
+    background-color: #222!important;
+}
+#main {
+    height: 100%;
+    width: 100%;
+}
+body, li {
+    list-style: none;
+}
+.region.region-content, body {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+body {
+    min-height: 100%;
+    -webkit-font-smoothing: antialiased;
+    font: 14px/18px 'Lato',sans-serif;
+    color: #000;
+    background: #fff;
+    height: auto;
+}
+#main {
+    background: #222;
+}
+#main_inner {
+    height: inherit;
+}
+#block-system-main {
+    padding-right: 14px!important;
+    padding-left: 14px!important;
+    color: #fff;
+}
+form {
+    margin: 0;
+    padding: 0;
+}
+form#user-register-form {
+    padding: 0 30px 30px;
+}
+form#user-register-form>div {
+    max-width: 300px;
+}
+@media only screen and (min-width: 600px)
+{
+    form#user-register-form>div {
+        max-width: 580px;
+    }
+}
+@media only screen and (min-width: 781px)
+{
+    form#user-register-form>div {
+        max-width: 760px;
+    }
+}
+@media only screen and (min-width: 992px)
+{
+    form#user-register-form>div {
+        max-width: 970px;
+    }
+}
+@media only screen and (min-width: 1400px)
+{
+    form#user-register-form>div {
+        max-width: 1380px;
+    }
+}
+.dialog__login form#user-pass div, .dialog__login form[id^=user-login] div, .page-user form#user-login div, .page-user form#user-pass div, form#user-register-form>div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin: auto;
+}
+.register-form--title {
+    text-align: center;
+    font: Bold 38px/46px Lato;
+    letter-spacing: 0;
+    color: #fff;
+    opacity: 1;
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+.game-reviews, form#user-register-form>div #edit-account, form#user-register-form>div #edit-legal {
+    margin-bottom: 30px;
+}
+.game-post-frm .comment-form>div, form#user-register-form>div .form-item.form-type-password, form#user-register-form>div .form-item.form-type-textfield {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+.form-actions, .form-item.form-type-textfield {
+    display: inline-block;
+    width: 80%;
+    height: 45px;
+}
+form#user-register-form>div .form-item.form-type-password, form#user-register-form>div .form-item.form-type-password-confirm, form#user-register-form>div .form-item.form-type-textfield {
+    width: 100%;
+    height: auto;
+    color: #fff;
+}
+.marker, .form-required {
+    color: red;
+}
+@media only screen and (min-width: 781px)
+{
+    form#user-register-form>div .form-item.form-type-password, form#user-register-form>div .form-item.form-type-password-confirm, form#user-register-form>div .form-item.form-type-textfield {
+        display: block;
+        width: 60%;
+        margin: auto;
+    }
+}
+@media screen and (min-width: 710px)
+{
+    form#user-register-form>div .form-item.form-type-password, form#user-register-form>div .form-item.form-type-password input, form#user-register-form>div .form-item.form-type-textfield, form#user-register-form>div .form-item.form-type-textfield input {
+        width: 625px;
+    }
+}
+form#user-register-form>div .form-item.form-type-password>label, form#user-register-form>div .form-item.form-type-textfield>label {
+    margin: 4px 0 0 15px;
+    font: Bold 16px/19px Lato;
+    letter-spacing: .15px;
+}
+form#user-register-form>div .form-item.form-type-password input:focus, form#user-register-form>div .form-item.form-type-password input:hover, form#user-register-form>div .form-item.form-type-password-confirm input:focus, form#user-register-form>div .form-item.form-type-password-confirm input:hover, form#user-register-form>div .form-item.form-type-textfield input:focus, form#user-register-form>div .form-item.form-type-textfield input:hover, form.webform-client-form div .form-item .form-textarea-wrapper textarea:focus, form.webform-client-form div .form-item .form-textarea-wrapper textarea:hover, form.webform-client-form div .form-item input:focus, form.webform-client-form div .form-item input:hover {
+    border-color: #ee3124;
+}
+form#user-register-form>div .form-item.form-type-password input, form#user-register-form>div .form-item.form-type-textfield input {
+    background: #3a3a3a 0 0 no-repeat padding-box;
+    border: 1px solid #ebebeb;
+    border-radius: 4px;
+    opacity: 1;
+    height: 56px;
+}
+a:active, a:hover, input, textarea {
+    outline: 0!important;
+}
+.form-item.form-type-textfield input {
+    width: 100%;
+    height: 100%;
+    padding: 0 15px;
+    border: 0;
+    border-radius: 10px;
+    font: 400 14px/20px 'Open Sans',sans-serif;
+    color: #fff;
+    background: #222;
+}
+.page-user .profile-form form #edit-mail, .page-user .profile-form form #edit-name, .page-user .profile-form form #edit-pass-pass1, .page-user .profile-form form #edit-pass-pass2, form#user-register-form>div .form-item.form-type-password input, form#user-register-form>div .form-item.form-type-password-confirm input, form#user-register-form>div .form-item.form-type-textfield input {
+    width: 100%;
+    padding: 0 15px;
+    margin-bottom: 5px;
+    border: 1px solid rgba(255,255,255,.5);
+    font-size: 16px;
+    color: #fff;
+    background: #171717;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+    cursor: pointer;
+}
+.node-game .instru-blk p a:hover, .page-user .profile .forgot-password a:hover, .view .view-content .views-table tbody tr a:hover, .view .view-content .views-table tbody tr td.views-field-title .txt_box a:hover, form#user-register-form>div #edit-legal .fieldset-wrapper a:hover, form#user-register-form>div .create-account a:hover, form#user-register-form>div .err, form#user-register-form>div .forgot-password a:hover {
+    color: #fff;
+}
+.form-item .err {
+    display: none;
+    margin: 0!important;
+}
+.form-item .err {
+    font-size: .85em;
+}
+form#user-register-form>div .form-item.form-type-password .err, form#user-register-form>div .form-item.form-type-password-confirm .err, form#user-register-form>div .form-item.form-type-textfield .err {
+    margin: 10px auto;
+}
+.form-item .err-inner {
+    padding: 5px 15px;
+    margin: 5px 0 10px;
+    border: 1px solid #15a046;
+    border-radius: 5px;
+    color: red;
+}
+.form-actions {
+    float: right;
+    width: 20%;
+}
+form#user-register-form>div .form-actions {
+    position: relative;
+    display: block;
+    float: none;
+    width: 100%;
+    height: auto;
+    background: 0 0;
+}
+form#user-register-form>div .form-actions input {
+    min-width: 296px;
+    padding: 17px 57px;
+    height: unset;
+    background: #3a3a3a 0% 0% no-repeat padding-box;
+    border: 2px solid #239e28;
+    border-radius: 8px;
+    opacity: 1;
+    text-align: center;
+    font: Bold 20px Lato;
+    letter-spacing: 0;
+    color: #239e28;
+}
+@media only screen and (min-width: 781px)
+{
+    form#user-register-form>div .form-actions input {
+        width: 20%;
+    }
+}
+form#user-register-form>div .form-actions input {
+    display: block;
+    width: 190px;
+    margin: auto;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+    cursor: pointer;
+}
+form#user-register-form>div .form-actions input:hover {
+    min-width: 310px;
+    padding: 23px 50px;
+    background: #3a3a3a 0% 0% no-repeat padding-box;
+    font: Bold 23px/28px Lato;
+}
+form#user-register-form>div .form-actions input:hover, ul.ui-autocomplete#ui-id-1 .ui-menu-item .ui-autocomplete-fields:hover a {
+    background: 0 0;
+}

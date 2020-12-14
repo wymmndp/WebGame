@@ -1,0 +1,21 @@
+{
+  "name": "webgame",
+  "description": "game",
+  "main": "",
+  "authors": [
+    "Wymm"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "game"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/asset/",
+    "test",
+    "tests"
+  ]
+}

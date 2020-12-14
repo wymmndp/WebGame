@@ -1,0 +1,172 @@
+#main {
+    height: 100%;
+    width: 100%;
+}
+
+@media only screen and (max-width: 960px)
+{
+    #main {
+        overflow-x: hidden;
+    }
+}
+#main {
+    background: #222;
+}
+#main_inner {
+    height: inherit;
+}
+.region.region-content {
+    height: inherit;
+}
+.region.region-content, body {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+#block-system-main {
+    padding-right: 14px!important;
+    padding-left: 14px!important;
+    color: #fff;
+}
+@media only screen and (min-width: 1400px)
+{
+    .page-user form#user-login div, .page-user form#user-pass div {
+        max-width: 1380px;
+    }
+}
+@media only screen and (min-width: 992px)
+{
+    .page-user form#user-login div, .page-user form#user-pass div {
+        max-width: 970px;
+    }
+}
+@media only screen and (min-width: 781px)
+{
+    .page-user form#user-login div, .page-user form#user-pass div {
+        max-width: 760px;
+    }
+}
+@media only screen and (max-width: 414px)
+{
+    #block-system-main, .page-user #block-system-main {
+        padding-right: 9px!important;
+    }
+}
+@media only screen and (max-width: 640px)
+{
+    #block-system-main {
+        padding-right: 9px!important;
+    }
+}
+@media only screen and (max-width: 991px)
+{
+    #block-system-main {
+        padding-right: 16px!important;
+        padding-left: 9px!important;
+    }
+}
+@media only screen and (min-width: 781px)
+{
+    .page-user form#user-login div .form-item.form-type-password, .page-user form#user-login div .form-item.form-type-textfield, .page-user form#user-pass div .form-item.form-type-password, .page-user form#user-pass div .form-item.form-type-textfield {
+        width: 60%;
+    }
+}    
+.dialog__login form#user-pass div .form-item.form-type-password input, .dialog__login form#user-pass div .form-item.form-type-textfield input, .dialog__login form[id^=user-login] div .form-item.form-type-password input, .dialog__login form[id^=user-login] div .form-item.form-type-textfield input, .page-user form#user-login div .form-item.form-type-password input, .page-user form#user-login div .form-item.form-type-textfield input, .page-user form#user-pass div .form-item.form-type-password input, .page-user form#user-pass div .form-item.form-type-textfield input {
+    width: 100%;
+    height: 40px;
+    padding: 0 15px;
+    margin-bottom: 5px;
+    border: 1px solid rgba(255,255,255,.5);
+    border-radius: 4px;
+    font-size: 16px;
+    color: #fff;
+    background: #171717;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+    cursor: pointer;
+}   
+.btn-group-vertical>.btn-group:after, .btn-group-vertical>.btn-group:before, .btn-toolbar:after, .btn-toolbar:before, .clearfix:after, .clearfix:before, .container-fluid:after, .container-fluid:before, .container:after, .container:before, .dl-horizontal dd:after, .dl-horizontal dd:before, .form-horizontal .form-group:after, .form-horizontal .form-group:before, .modal-footer:after, .modal-footer:before, .modal-header:after, .modal-header:before, .nav:after, .nav:before, .navbar-collapse:after, .navbar-collapse:before, .navbar-header:after, .navbar-header:before, .navbar:after, .navbar:before, .pager:after, .pager:before, .panel-body:after, .panel-body:before, .row:after, .row:before {
+    display: table;
+    content: ' ';
+}
+.dialog__login form#user-pass, .dialog__login form[id^=user-login], .page-user form#user-pass, .page-user form[id^=user-login] {
+    padding: 30px;
+}
+form {
+    margin: 0;
+    padding: 0;
+}
+.dialog__login form#user-pass div .form-item.form-type-password, .dialog__login form#user-pass div .form-item.form-type-textfield, .dialog__login form[id^=user-login] div .form-item.form-type-password, .dialog__login form[id^=user-login] div .form-item.form-type-textfield, .page-user form#user-login div .form-item.form-type-password, .page-user form#user-login div .form-item.form-type-textfield, .page-user form#user-pass div .form-item.form-type-password, .page-user form#user-pass div .form-item.form-type-textfield, form.webform-client-form div .form-item {
+    width: 100%;
+    height: auto;
+    color: #fff;
+}
+.dialog__login form#user-pass div, .dialog__login form[id^=user-login] div, .page-user form#user-login div, .page-user form#user-pass div, form#user-register-form>div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin: auto;
+}
+@media only screen and (max-width: 1200px)
+{
+    .page-user form#user-login div, .page-user form#user-pass div {
+        max-width: 1180px;
+    }
+}
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+.marker, .form-required {
+    color: red;
+}
+.page-user form#user-login div .form-item.form-type-password input, .page-user form#user-login div .form-item.form-type-textfield input {
+    width: 100%;
+    height: 40px;
+    padding: 0 15px;
+    margin-bottom: 5px;
+    border: 1px solid rgba(255,255,255,.5);
+    border-radius: 4px;
+    font-size: 16px;
+    color: #fff;
+    background: #171717;
+}
+.form-item.form-type-textfield input {
+    width: 100%;
+    height: 100%;
+    padding: 0 15px;
+    border: 0;
+    border-radius: 10px;
+    font: 400 14px/20px 'Open Sans',sans-serif;
+    color: #fff;
+    background: #222;
+}
+.dialog__login form#user-pass div .form-item.form-type-password input:focus, .dialog__login form#user-pass div .form-item.form-type-password input:hover, .dialog__login form#user-pass div .form-item.form-type-textfield input:focus, .dialog__login form#user-pass div .form-item.form-type-textfield input:hover, .dialog__login form[id^=user-login] div .form-item.form-type-password input:focus, .dialog__login form[id^=user-login] div .form-item.form-type-password input:hover, .dialog__login form[id^=user-login] div .form-item.form-type-textfield input:focus, .dialog__login form[id^=user-login] div .form-item.form-type-textfield input:hover, .page-user form#user-login div .form-item.form-type-password input:focus, .page-user form#user-login div .form-item.form-type-password input:hover, .page-user form#user-login div .form-item.form-type-textfield input:focus, .page-user form#user-login div .form-item.form-type-textfield input:hover, .page-user form#user-pass div .form-item.form-type-password input:focus, .page-user form#user-pass div .form-item.form-type-password input:hover, .page-user form#user-pass div .form-item.form-type-textfield input:focus, .page-user form#user-pass div .form-item.form-type-textfield input:hover {
+    border-color: #ee3124;
+}
+a:active, a:hover, input, textarea {
+    outline: 0!important;
+}   
+input.click-login {
+    display: block;
+    width: 190px;
+    height: 40px;
+    margin: auto;
+    border: 1px solid #ee3124 !important;
+    border-radius: 4px;
+    text-align: center;
+    color: #fff;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+    cursor: pointer;
+}

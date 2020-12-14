@@ -1,0 +1,153 @@
+.contentPage.contentPageVIP {
+    background-color: transparent;
+}
+.contentPage.contentPageVIP .container,.contentPage.contentPageVIP .mainContent .content {
+    padding-bottom: 0!important;
+}
+.contentPage.contentPageVIP .container, .contentPage.contentPageVIP .mainContent .content {
+    padding-bottom: 0!important;
+}
+.contentPage .mainContent ul.tabs {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.contentPage .mainContent .content .comments .tabs {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: inline-block;
+}
+.contentPage .mainContent ul.tabs li {
+    background: 0 0;
+    color: #222;
+    display: inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+.contentPage .mainContent .content .comments .tabs .current {
+    background: unset;
+    border-bottom: 3px solid #b1b1b1;
+}
+ .contentPage .mainContent .content .comments .tabs li {
+    display: inline-block;
+    padding: 5px 2px;
+    margin: 0 8px;
+}
+ .contentPage .mainContent ul.tabs li.current {
+    background: #ededed;
+    color: #222;
+}
+.contentPage .mainContent .content .comments .tabs li a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.contentPage .mainContent .content .comments .commentPage {
+    display: block;
+    padding: 20px 8px;
+}
+.contentPage .mainContent .content .comments .commentPage .content {
+    display: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+@media screen and (max-width: 768px)
+{
+    .wrapper .contentPage .mainContent .content {
+        flex: unset;
+    }
+}
+@media screen and (max-width: 1024px)
+{
+    .wrapper .contentPage .mainContent .content {
+        max-width: 100%;
+        flex: unset;
+        overflow: hidden;
+        display: block;
+    }
+}
+.contentPage .mainContent .content .comments .commentPage .userComment {
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.contentPage .mainContent .content .comments .commentPage .userComment .avatar {
+    flex: 0 0 70px;
+    padding: 4px;
+}
+.contentPage .mainContent .content .comments .commentPage .userComment .avatar img {
+    max-width: 100%;
+}
+.contentPage .mainContent .content .comments .commentPage .userComment .detail {
+    flex: 1;
+    display: flex;
+}
+.contentPage .mainContent .content .comments .commentPage .userComment .detail button {
+    flex: 0 0 42px;
+    height: 42px;
+    margin-left: 5px;
+}
+.ck {
+    width: 960px;
+    height: 70px;
+}
+.contentPage .mainContent .content .comments .commentPage .listComment ul.list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+    width: 100%;
+}
+.contentPage .mainContent .content .comments .commentPage .listComment ul.list li {
+    clear: both;
+    display: block;
+    width: 100%;
+}
+.contentPage .mainContent .content .comments .commentPage .listComment ul.list .area-comment {
+    display: block;
+}
+.contentPage .mainContent .content .comments .commentPage .listComment ul.list li .cover {
+    flex: 0 0 50px;
+    padding: 2px;
+    width: 80px;
+    float: left;
+}
+.contentPage .mainContent .content .comments .commentPage .listComment ul.list li .cover img {
+    width: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 5px auto;
+    display: block;
+}
+.contentPage .mainContent .content .comments .commentPage .listComment ul.list li .detail {
+    width: calc(100% - 80px);
+    padding: 6px;
+    float: left;
+    border: 1px solid #ccc;
+    margin-bottom: 6px;
+    border-radius: 1px;
+}
+.contentPage .mainContent .content .comments .commentPage .listComment ul.list li .detail .userName {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0;
+    float: left;
+    line-height: 25px;
+    color: #4b78f2;
+}
+.contentPage .mainContent .content .comments .commentPage .listComment ul.list li .detail .userName-commentTime {
+    display: block;
+    min-height: 25px;
+}
+.contentPage .mainContent .content .comments .commentPage .listComment ul.list li .detail .userComment {
+    font-size: 13px;
+    margin: 0;
+    padding-top: 2px;
+    padding-bottom: 4px;
+}
+.contentPage .mainContent .content .comments .commentPage .userComment {
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+}

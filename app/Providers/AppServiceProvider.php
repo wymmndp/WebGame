@@ -22,7 +22,8 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {
-        //
+    {   
+        $danhmuc = \App\DanhMuc::all();
+        view()->share(['danhmuc'=>$danhmuc]);
     }
 }
