@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Account;
 use App\DanhMuc;
 use App\DetailInvoice;
 use App\PreInvoice;
@@ -24,6 +25,13 @@ class ActionUserController extends Controller
         $gameincategories = \App\Game::where('iddm','=',$request->iddm)->paginate(12);
         $categories = \App\DanhMuc::where('iddanhmuc','=',$request->iddm)->first();
         return view('user.layout.viewfromcategories',compact($gameincategories),['gameincategories'=>$gameincategories,'categories'=>$categories]);
+    }
+    public function searchGame(Request $request) {
+        $searchname = $request->namesearch;
+        $allgamesearch = \App\Game::getGameSearch($searchname);
+        $count = count($allgamesearch);
+        return view('user.action.viewsearch',compact($allgamesearch),['allgamesearch'=>$allgamesearch,'count'=>$count]);
+
     }
     public function viewAllCategories() {
         return view('user.layout.viewallcategories');
@@ -84,13 +92,42 @@ class ActionUserController extends Controller
         } else return "Thanh toán thất bại";
     }
     public function test() {
-        $username = 'duyphuc';
-        $preinvoices = \App\PreInvoice::join('game', 'game.id', '=', 'pre_invoices.idgame')->where('username','=',$username)->select('idgame','namegame','coin')->get();
-        $allcoin = \App\Account::where('username');
-        dd($preinvoices);
+        return view('user.layout.test');
     }
     public function playGame(Request $request) {
+        if(session()->has('username')) {
+            $username = session()->get('username');
+            $detailAccount = \App\Account::getDetailAccount($username);
+            $idgame = $request->idgame;
+            return view('user.action.playgame',['detailAccount'=>$detailAccount,'idgame'=>$idgame]);
+        } else return redirect('login');
+    }
+    public function addCommentRoot(Request $request) {
+        $username = $request->username;
+        $txt = $request->txt;
         $idgame = $request->idgame;
-        return view('user.action.playgame');
+        if(\App\Comment::addCommentRoot($username,$txt,$idgame)) {
+            return "Thêm Bình Luận Thành Công";
+        } else return "Thêm Bình Luận Thất Bại";    
+    }
+    public function replyComment(Request $request) {
+        $username = $request->username;
+        $replytxt = $request->replytxt;
+        $idgame = $request->idgame;
+        $replyidcomment = $request->replyidcomment;
+        if(\App\Comment::replyComment($username,$replyidcomment,$idgame,$replytxt)) {
+            return 'Trả lời bình luận thành công';
+        } else return 'Trả lời bình luận thất bại';
+    }
+    public function loadListCommentRoot(Request $request) {
+        $idgame = $request->idgame;
+        $getListCommentRoot = \App\Comment::getListCommentRoot($idgame);
+        return $getListCommentRoot;
+    }
+    public function loadListReplyComment(Request $request) {
+        $idgame = $request->idgame;
+        $replyidcomments = $request->replyidcomment;
+        $getListReplyComment = \App\Comment::getListReplyComment($idgame,$replyidcomments);
+        return $getListReplyComment;
     }
 }   

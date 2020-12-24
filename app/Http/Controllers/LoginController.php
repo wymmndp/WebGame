@@ -30,4 +30,7 @@ class LoginController extends Controller
             }
         }   
     }
+    public function getLoginAdminForm() {
+        return view('admin.action.loginadmin');
+    }
 }

@@ -34,11 +34,11 @@
                 </a>
                 <div class="search_box hidden-md">
                     <div class="inn_search_box">
-                        <form action="search.php" accept-charset="UTF-8" method="GET" id="search-block-form">
+                        <form action="{{route('searchGame')}}" accept-charset="UTF-8" method="GET" id="search-block-form">
                             <div class="form-item form-type-textfield form-item-search-block-form">
                                 <label for="edit-search-block-form--2" class="element-invisible">Search</label>
                                 <input type="text" placeholder="Nhập Tên Game Cần Tìm" id="edit-search-block-form--2"
-                                    name="search_form" size="15" maxlength="128"
+                                    name="namesearch" size="15" maxlength="128"
                                     class=" form-autocomplete ui-autocomplete-processed ui-autocomplete-input"
                                     data-sa-theme="basic-green">
                                 <span role="status" class="ui-helper-hidden-accessible"></span>

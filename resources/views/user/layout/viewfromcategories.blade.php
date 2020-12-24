@@ -22,7 +22,6 @@
                             <div class="addiction-game-sec new-game">
                                 <div class="top-head">
                                     <h1>{{$categories->tendanhmuc}}</h1>
-                                    <h2 class="element-invisible">You are here</h2>
                                     <div class="breadcrumb"><a href="/">Games</a> » {{$categories->tendanhmuc}}</div>
                                 </div>
                                 <div class="game-gallerty inn_panel1_box stra_games">

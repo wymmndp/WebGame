@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<!-- Created By CodingNepal -->
-<html lang="en" dir="ltr">
-
-<head>
-    <meta charset="utf-8">
-    <!-- Somehow I got an error, so I comment the title, just uncomment to show -->
-    <!-- <title>Transparent Login Form UI</title> -->
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <style>
-    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Poppins:400,500&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Poppins:400,500&display=swap');
 
     * {
         margin: 0;
@@ -19,7 +8,7 @@
     }
 
     .bg-img {
-        background: url('{{asset("image/bg1.jpg")}}');
+        background: url(../image/bg1.jpg);
         height: 100vh;
         background-size: cover;
         background-position: center;
@@ -178,45 +167,3 @@
     .signup a:hover {
         text-decoration: underline;
     }
-    </style>
-</head>
-
-<body>
-    <div class="bg-img">
-        <div class="content">
-            <header>Addicting Games</header>
-            <form action="#">
-                <div class="field">
-                    <span class="fa fa-user"></span>
-                    <input type="text" required placeholder="Admin">
-                </div>
-                <div class="field space">
-                    <span class="fa fa-lock"></span>
-                    <input type="password" class="pass-key" required placeholder="Password">
-                    <span class="show">SHOW</span>
-                </div>
-                
-                <div class="field" style="margin-top: 15px;">
-                    <input type="submit" value="LOGIN">
-                </div>
-            </form>
-        </div>
-    </div>
-    <script>
-    const pass_field = document.querySelector('.pass-key');
-    const showBtn = document.querySelector('.show');
-    showBtn.addEventListener('click', function() {
-        if (pass_field.type === "password") {
-            pass_field.type = "text";
-            showBtn.textContent = "HIDE";
-            showBtn.style.color = "#3498db";
-        } else {
-            pass_field.type = "password";
-            showBtn.textContent = "SHOW";
-            showBtn.style.color = "#222";
-        }
-    });
-    </script>
-</body>
-
-</html>

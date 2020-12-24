@@ -31,4 +31,8 @@ class Account extends Model implements AuthenticatableContract
         $account->save();
         return true;
     }
+    public static function getDetailAccount($username) {
+        $detailAccount = Account::find($username);
+        return $detailAccount;
+    }
 }
