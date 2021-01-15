@@ -14,7 +14,7 @@ class ActionUserController extends Controller
 {   
     public function __construct()
     {
-         
+       
     }
     public function default() {
         $gamenew = \App\Game::orderby('time','DESC')->take(12)->get();
@@ -28,10 +28,17 @@ class ActionUserController extends Controller
     }
     public function searchGame(Request $request) {
         $searchname = $request->namesearch;
-        $allgamesearch = \App\Game::getGameSearch($searchname);
+        $allgamesearch = \App\Game::getGameSearch($searchname,0,0,10);
         $count = count($allgamesearch);
-        return view('user.action.viewsearch',compact($allgamesearch),['allgamesearch'=>$allgamesearch,'count'=>$count]);
-
+        return view('user.action.viewsearch',compact($allgamesearch),['allgamesearch'=>$allgamesearch,'count'=>$count,'content'=>$searchname]);
+    }
+    public function searchCoin(Request $request) {
+        $content = $request->content;
+        $mincoin = $request->mincoin;
+        $maxcoin = $request->maxcoin;
+        $allgamesearch = \App\Game::getGameSearch($content,$mincoin,$maxcoin,10);
+        $count = count($allgamesearch);
+        return view('user.action.searchgamebycoin',compact($allgamesearch),['allgamesearch'=>$allgamesearch,'count'=>$count,'content'=>$content]);
     }
     public function viewAllCategories() {
         return view('user.layout.viewallcategories');
@@ -42,7 +49,7 @@ class ActionUserController extends Controller
         $game = \App\Game::where('id','=',$idgame)->first();
         if(session()->has('username')) {
             $username = session()->get('username');
-            $checkhavegame = \App\Account::join('invoice','account.username','=','invoice.username')->join('detail_invoice','invoice.id_invoice','=','detail_invoice.id_invoice')->where('account.username','=',$username)->where('detail_invoice.idgame','=',$idgame)->count();
+            $checkhavegame = \App\Account::checkAccountHaveGame($username,$idgame);
             if($checkhavegame>0) {
                 return view('user.layout.detailgame',['game'=>$game,'havegame'=>$checkhavegame]);
             }
@@ -99,7 +106,10 @@ class ActionUserController extends Controller
             $username = session()->get('username');
             $detailAccount = \App\Account::getDetailAccount($username);
             $idgame = $request->idgame;
-            return view('user.action.playgame',['detailAccount'=>$detailAccount,'idgame'=>$idgame]);
+            $getListCommentRoot = \App\Comment::getListCommentRoot($idgame);
+            $getListCommentReply = \App\Comment::getListReplyComment($idgame);
+            $game = \App\Game::getGameDetail($idgame);
+            return view('user.action.playgame',['detailAccount'=>$detailAccount,'idgame'=>$idgame,"listCommentRoot"=>$getListCommentRoot,"listReplyComment"=>$getListCommentReply,'game'=>$game]);
         } else return redirect('login');
     }
     public function addCommentRoot(Request $request) {
@@ -115,19 +125,47 @@ class ActionUserController extends Controller
         $replytxt = $request->replytxt;
         $idgame = $request->idgame;
         $replyidcomment = $request->replyidcomment;
-        if(\App\Comment::replyComment($username,$replyidcomment,$idgame,$replytxt)) {
+        $idroot = $request->idroot;
+        if(\App\Comment::replyComment($username,$replyidcomment,$idgame,$replytxt,$idroot)) {
             return 'Trả lời bình luận thành công';
         } else return 'Trả lời bình luận thất bại';
     }
-    public function loadListCommentRoot(Request $request) {
+    public function loadListComment(Request $request) {
         $idgame = $request->idgame;
         $getListCommentRoot = \App\Comment::getListCommentRoot($idgame);
-        return $getListCommentRoot;
+        $getListCommentReply = \App\Comment::getListReplyComment($idgame);
+        return view('user.action.comment',["listCommentRoot"=>$getListCommentRoot,"listReplyComment"=>$getListCommentReply]);
     }
-    public function loadListReplyComment(Request $request) {
-        $idgame = $request->idgame;
-        $replyidcomments = $request->replyidcomment;
-        $getListReplyComment = \App\Comment::getListReplyComment($idgame,$replyidcomments);
-        return $getListReplyComment;
+    public function getDetailUser() {
+        if(session()->has('username')) {
+            $account = \App\Account::getDetailAccount(session()->get('username'));
+            return view('user.layout.detailuser',['account'=>$account]);
+        } else return redirect('login');
+    }
+    public function updateInformationUser(Request $request) {
+        $username = $request->username;
+        $firstname = $request->firstname;
+        $lastname = $request->lastname;
+        $avatar = $request->avatar;
+        $email = $request->email;
+        $oldpass = $request->oldpass;
+        $newpass = $request->newpass;
+        if(\App\Account::updateInformation($username,$firstname,$lastname,$avatar,$email,$oldpass,$newpass)==1) {
+            return 1;
+        } else if(\App\Account::updateInformation($username,$firstname,$lastname,$avatar,$email,$oldpass,$newpass)==-1) {
+            return -1;
+        }
+    }
+    public function upGame(Request $request) {
+        $username = $request->username;
+        $namegame = $request->namegame;
+        $imggame = $request->imggame;
+        $linkgame = $request->linkgame;
+        $description = $request->description;
+        $coin = $request->coin;
+        $theloai = $request->theloai;
+        if(\App\UserUpGame::newupgame($username,$namegame,$imggame,$linkgame,$description,$coin,$theloai)) {
+            return true;
+        } else return false;
     }
 }   

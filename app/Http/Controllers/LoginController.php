@@ -10,7 +10,7 @@ class LoginController extends Controller
 {   
     public function __construct()
     {
-         
+        
     }
     public function getLoginForm() {
         return view('user.action.login');
@@ -21,8 +21,8 @@ class LoginController extends Controller
         } else {
             $username = $request->username;
             $password = $request->pass;
-            $count = \App\Account::login($username,$password);
-            if($count>0) {
+            $account = \App\Account::login($username,$password);
+            if(!is_null($account)) {
                 $request->session()->put('username',$username);
                 return redirect('/');
             } else {
@@ -30,7 +30,24 @@ class LoginController extends Controller
             }
         }   
     }
-    public function getLoginAdminForm() {
-        return view('admin.action.loginadmin');
+    public function getLoginAdminForm(Request $request) {
+        if($request->session()->has('admin')) {
+            return redirect('admin/dashboard');
+        } else {
+            return view('admin.action.loginadmin');
+        }
+    }
+    public function postLoginAdminForm(Request $request) {
+        $username = $request->username;
+        $password = $request->password;
+        $account = \App\Account::login($username,$password);
+        if(!is_null($account)) {
+            if($account->type == "admin" || $account->type=="sadmin") {
+                $request->session()->put('admin',$account->username);
+                return redirect('admin/dashboard');
+            } else return redirect()->back()->with('fail','Bạn không có quyền truy cập');
+        } else {
+            return redirect()->back()->with('fail','Tên đăng nhập hoặc mật khẩu không chính xác');
+        }
     }
 }

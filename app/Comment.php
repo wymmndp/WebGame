@@ -23,7 +23,7 @@ class Comment extends Model implements AuthenticatableContract
         $comment->save();
         return true;
     }
-    public static function replyComment($usernamereply,$replyidcomment,$idgame,$replytxt) {
+    public static function replyComment($usernamereply,$replyidcomment,$idgame,$replytxt,$idroot) {
         $comment = new Comment();
         $comment->username = $usernamereply;
         $comment->idgame = $idgame;
@@ -31,15 +31,20 @@ class Comment extends Model implements AuthenticatableContract
         $comment->content = $replytxt;
         $comment->time = \Carbon\Carbon::now('Asia/Ho_Chi_Minh');
         $comment->replyusername = Comment::find($replyidcomment)->username;
+        $comment->idroot = $idroot;
         $comment->save();
         return true;
     }
     public static function getListCommentRoot($idgame) {
-        $getListCommentRoot = Comment::join('account','comments.username','=','account.username')->where('comments.idgame','=',$idgame)->where('replyidcomments','=','-1')->select('idcomments','account.username','content','time','avatar')->get();
+        $getListCommentRoot = Comment::join('account','comments.username','=','account.username')->where('comments.idgame','=',$idgame)->where('replyidcomments','=','-1')->orderBy('time','desc')->select('idcomments','account.username','content','comments.time','avatar','idroot')->get();
         return $getListCommentRoot;
     }
-    public static function getListReplyComment($idgame,$replyidcomments) {
-        $getListReplyComment = Comment::join('account','comments.username','=','account.username')->where('comments.idgame','=',$idgame)->where('replyidcomments','=',$replyidcomments)->select('idcomments','account.username','content','time','avatar','replyidcomments')->get();
+    public static function getListReplyComment($idgame) {
+        $getListReplyComment = Comment::join('account','comments.username','=','account.username')->where('comments.idgame','=',$idgame)->orderBy('time','asc')->select('idcomments','account.username','content','comments.time','avatar','replyidcomments','idroot')->get();
         return $getListReplyComment;
+    }
+    public static function deleteAllCommentInGame($idgame) {    
+        Comment::where('idgame','=',$idgame)->delete();
+        return true;
     }
 }

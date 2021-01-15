@@ -15,20 +15,27 @@
     <div class="bg-img">
         <div class="content">
             <header>Addicting Games</header>
-            <form action="#">
+            <form action="{{Asset('admin/login')}}" method="POST">
                 <div class="field">
                     <span class="fa fa-user"></span>
-                    <input type="text" required placeholder="Admin">
+                    <input name="username" type="text" required placeholder="Admin">
                 </div>
                 <div class="field space">
                     <span class="fa fa-lock"></span>
-                    <input type="password" class="pass-key" required placeholder="Password">
+                    <input name="password" type="password" class="pass-key" required placeholder="Password">
                     <span class="show">SHOW</span>
                 </div>
-                
+
                 <div class="field" style="margin-top: 15px;">
                     <input type="submit" value="LOGIN">
                 </div>
+                {{ csrf_field() }}
+                @if(session('fail'))
+                <div class="form-actions form-wrapper"
+                    style="text-align: center;margin-top:5px;color:red;font-size:20px">
+                    {{session('fail')}}
+                </div>
+                @endif
             </form>
         </div>
     </div>

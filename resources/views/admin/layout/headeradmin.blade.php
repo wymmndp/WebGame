@@ -9,26 +9,25 @@
         content="Sleek Dashboard - Free Bootstrap 4 Admin Dashboard Template and UI Kit. It is very powerful bootstrap admin dashboard, which allows you to build products like admin panels, content management systems and CRMs etc.">
 
 
-
+    
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500"
         rel="stylesheet" />
     <link href="https://cdn.materialdesignicons.com/4.4.95/css/materialdesignicons.min.css" rel="stylesheet" />
     <script src="{{asset('asset/jquery/dist/jquery.js')}}"></script>
-    
+    <link rel="stylesheet" href="{{asset('admin_css/alldanhmuc.css')}}">
     <link rel="stylesheet" href="{{asset('asset/boostrap/dist/css/bootstrap.css')}}">
+    <script src="{{asset('asset/jquery-validation/dist/jquery.validate.js')}}"></script>
     <link rel="stylesheet" href="{{asset('admin_css/sleek.css')}}">
-
+    <link rel="stylesheet" href="{{asset('admin_css/alldanhmuc.css')}}">
 </head>
-
-
 <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">
     <div class="wrapper">
         <aside class="left-sidebar bg-sidebar">
             <div id="sidebar" class="sidebar sidebar-with-footer">
                 <!-- Aplication Brand -->
                 <div class="app-brand">
-                    <a href="/index.html" title="Sleek Dashboard">
+                    <a href="{{URL::to('admin/dashboard')}}" title="Sleek Dashboard">
                         <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
                             width="30" height="33" viewBox="0 0 30 33">
                             <g fill="none" fill-rule="evenodd">
@@ -86,13 +85,13 @@
                             <ul class="collapse" id="components" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
                                     <li>
-                                        <a class="sidenav-item-link" href="alert.html">
+                                        <a class="sidenav-item-link" href="{{URL::to('admin/allgame')}}">
                                             <span class="nav-text">Game</span>
 
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="sidenav-item-link" href="badge.html">
+                                        <a class="sidenav-item-link" href="{{URL::to('admin/newgame')}}">
                                             <span class="nav-text">Thêm Game</span>
                                         </a>
                                     </li>
@@ -127,19 +126,19 @@
                             <!-- User Account -->
                             <li class="dropdown user-menu">
                                 <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                                    <img src="https://i.pinimg.com/736x/27/bc/7b/27bc7b1d116c83824fbdf4547308a296.jpg" class="user-image" alt="User Image" />
-                                    <span class="d-none d-lg-inline-block">Duy Phúc</span>
+                                    <img src="{{$detailadmin->avatar}}" class="user-image" alt="User Image" />
+                                    <span class="d-none d-lg-inline-block"> {{$detailadmin->lastname}} {{$detailadmin->firstname}}</span>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <!-- User image -->
                                     <li class="dropdown-header">
-                                        <img src="https://i.pinimg.com/736x/27/bc/7b/27bc7b1d116c83824fbdf4547308a296.jpg" class="img-circle" alt="User Image" />
+                                        <img src="{{$detailadmin->avatar}}" class="img-circle" alt="User Image" />
                                         <div class="d-inline-block">
-                                            Duy Phúc 
+                                        {{$detailadmin->lastname}} {{$detailadmin->firstname}}
                                         </div>
                                     </li>
                                     <li class="dropdown-footer">
-                                        <a href="index.html"> <i class="mdi mdi-logout"></i> Log Out </a>
+                                        <a href="{{URL::to('admin/logout')}}"> <i class="mdi mdi-logout"></i> Log Out </a>
                                     </li>
                                 </ul>
                             </li>
@@ -160,7 +159,6 @@
     
     <script src="{{asset('asset/slimscrollbar/jquery.slimscroll.min.js')}}"></script>
     <script src="{{asset('js/jekyll-search.min.js')}}"></script>
-
     <script src="{{asset('js/sleek.bundle.js')}}"></script>
 </body>
 

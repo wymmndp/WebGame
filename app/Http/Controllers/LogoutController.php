@@ -16,4 +16,8 @@ class LogoutController extends Controller
         $request->session()->forget('username');
         return redirect()->back();
     }
+    public function logoutadmin(Request $request) {
+        $request->session()->forget('admin');
+        return redirect()->back();
+    }
 }

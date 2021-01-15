@@ -12,7 +12,6 @@
 <body>
     <div id="main">
         <div id="main_inner">
-
             <div class="region region-content">
                 <div class="recent-games__wrapper" style="min-height: 0px;"></div>
                 <div id="block-system-main" class="block block-system block-odd first last clearfix">

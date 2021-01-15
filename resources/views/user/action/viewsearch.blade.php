@@ -9,7 +9,7 @@
 </head>
 @include('user/layout/header')
 
-<body>
+<body class="push-body html not-front not-logged-in no-sidebars page-search">
     <div id="main">
         <div id="main_inner">
             <div class="region region-content">
@@ -37,134 +37,44 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="">
-                                        <div class="inn_search_rt">
-                                            @if(!$count>0)
-                                            <div class="top_search">
-                                                <h3>Không có kết quả nào</h3>
-                                            </div>
-                                            @else
-                                            <div class="rt_tbl_boxes">
-                                                <div class="rt_tbl_top">
-                                                    <div class="tbl_box">
-                                                        <div class="top-head-rt">
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="tbl_box">
-                                                        <h6>Coin</h6>
-                                                    </div>
-                                                    <div class="tbl_box">
-                                                        <h6>NGÀY THÊM</h6>
-                                                    </div>
-
-                                                </div>
-                                                @foreach($allgamesearch as $allsearch)
-                                                @if($loop->first)
-                                                <div class="rt_tbl_bottom no-border">
-                                                    <div class="tbl_box">
-                                                        <div class="media">
-                                                            <div class="media-left hasVideo">
-                                                                <a href="{{ URL::to('game/' . $allsearch->id) }}"
-                                                                    class="pic_box">
-                                                                    <img typeof="foaf:Image"
-                                                                        src="{{$allsearch->imggame}}" width="180"
-                                                                        height="117" alt="">
-                                                                </a>
-                                                            </div>
-                                                            <div class="media-body">
-                                                                <h4 class="media-heading"><a
-                                                                        href="{{ URL::to('game/' . $allsearch->id) }}">{{$allsearch->namegame}}</a>
-                                                                </h4>
-                                                                <p>{{$allsearch->detailgame}}</p>
-                                                                <h5>Category:</h5>
-                                                                <ul class="category_list">
-                                                                    <li><a
-                                                                            href="{{ URL::to('tag/' . $allsearch->iddanhmuc) }}">{{$allsearch->tendanhmuc}}</a>
-                                                                    </li>
-                                                                </ul>
+                                    <div class="col-md-3 col-sm-12">
+                                        <div class="inn_serach_lt">
+                                            <form  method="get" id="views-exposed-form-search-page"
+                                                accept-charset="UTF-8" class="jquery-once-2-processed">
+                                                <div>
+                                                    <div class="search-form">
+                                                        <div class="lt_search_box hidden-sm hidden-xs">
+                                                            <h5>Search</h5>
+                                                            <div
+                                                                class="form-item form-type-textfield form-item-search-api-views-fulltext">
+                                                                <input placeholder="Search here" type="text"
+                                                                    id="search-content-input"
+                                                                    name="search_api_views_fulltext" value="{{$content}}" size="30"
+                                                                    maxlength="128" class="form-text">
                                                             </div>
                                                         </div>
-
-                                                        <ul class="bottom_sec">
-                                                            <li>Coin: <span> {{$allsearch->coin}}</span></li>
-                                                            <li>Ngày Thêm: <span>{{$allsearch->time}}</span></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="tbl_box">
-                                                        <p>
-                                                            <strong>
-                                                                <span>
-                                                                    {{$allsearch->coin}}</span>
-                                                            </strong>
-                                                        </p>
-                                                    </div>
-                                                    <div class="tbl_box">
-                                                        <p>
-                                                            <strong>
-                                                                <span>
-                                                                    {{$allsearch->time}} </span>
-                                                            </strong>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                @else
-                                                <div class="rt_tbl_bottom">
-                                                    <div class="tbl_box">
-                                                        <div class="media">
-                                                            <div class="media-left hasVideo">
-                                                                <a href="{{ URL::to('game/' . $allsearch->id) }}"
-                                                                    class="pic_box">
-                                                                    <img typeof="foaf:Image"
-                                                                        src="{{$allsearch->imggame}}" width="180"
-                                                                        height="117" alt="">
-                                                                </a>
-                                                            </div>
-                                                            <div class="media-body">
-                                                                <h4 class="media-heading"><a
-                                                                        href="{{ URL::to('game/' . $allsearch->id) }}">{{$allsearch->namegame}}</a>
-                                                                </h4>
-                                                                <p>{{$allsearch->detailgame}}</p>
-                                                                <h5>Category:</h5>
-                                                                <ul class="category_list">
-                                                                    <li><a
-                                                                            href="{{ URL::to('tag/' . $allsearch->iddanhmuc) }}">{{$allsearch->tendanhmuc}}</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
+                                                        <div class="views-exposed-widget views-submit-button">
+                                                            <a href="javascript:void(0)" type="submit" id="edit-submit-search" name=""
+                                                                value="" class="form-submit"></a>
                                                         </div>
-
-                                                        <ul class="bottom_sec">
-                                                            <li>Coin: <span> {{$allsearch->coin}}</span></li>
-                                                            <li>Ngày Thêm: <span>{{$allsearch->time}}</span></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="tbl_box">
-                                                        <p>
-                                                            <strong>
-                                                                <span>
-                                                                    {{$allsearch->coin}}</span>
-                                                            </strong>
-                                                        </p>
-                                                    </div>
-                                                    <div class="tbl_box">
-                                                        <p>
-                                                            <strong>
-                                                                <span>
-                                                                    {{$allsearch->time}} </span>
-                                                            </strong>
-                                                        </p>
                                                     </div>
                                                 </div>
-                                                @endif
-                                                @endforeach
+                                            </form>
+                                            <div class="price" style="display: flex;font-size: 16px;margin-top: 15px;">
+                                                <input type="number" 
+                                                    class="input-price-number col-filter-price" value="0"
+                                                    name="filter_price_from" id="mincoin">
+                                                <p style="font-size: 16px;margin-right: 10px;margin-left: 10px;"> to </p>
+                                                <input type="number" 
+                                                    class="input-price-number col-filter-price" value="0"
+                                                    name="filter_price_from" id="maxcoin">
                                             </div>
-                                            @endif
-                                            <div class="bottom_pagination" style="width: 100%;">
-                                                <div class="pagination_sec" style="text-align: center;">
-                                                    {!! $allgamesearch->links() !!}
-                                                </div>
-                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-md-9 col-sm-12 sorting-by">
+                                        <div class="loadResult">
+                                        @include('user/action/searchgamebycoin')
                                         </div>
                                     </div>
                                 </div>
@@ -172,13 +82,35 @@
                         </div>
                     </section>
                 </div>
-
             </div>
-
-
             <div style="clear:both;"></div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            function search(content,mincoin,maxcoin) {
+                $.ajax({
+                    url: "{{route('searchCoin')}}",
+                    type: 'get',
+                    data: {
+                        _token: '{{csrf_token()}}',
+                        content : content,
+                        mincoin: mincoin,
+                        maxcoin: maxcoin,
+                    },
+                    success: function(data) {
+                        $('.loadResult').html(data);
+                    },
+                });
+            }
+            $('#edit-submit-search').on('click',function() {
+                var content = $('#search-content-input').val();
+                var mincoin = $('#mincoin').val();
+                var maxcoin = $('#maxcoin').val();
+                search(content,mincoin,maxcoin);
+            })
+        })
+    </script>
 </body>
 
 </html>

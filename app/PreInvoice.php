@@ -22,14 +22,25 @@ class PreInvoice extends Model implements AuthenticatableContract
     }
     // remove list game,minus coin after buy success
     public static function buySuccess($username,$listID) {
-        $account = Account::find('duyphuc');
+        $account = Account::find($username);
         $coinhave = \App\Account::where('username','=',$username)->select('coinhave')->sum('coinhave');
         $precoin = \App\PreInvoice::join('game', 'game.id', '=', 'pre_invoices.idgame')->where('username','=',$username)->sum('coin');
         $account->coinhave = $coinhave-$precoin;
         $account->save();
+        $gamehaving = new GameHaving();
         foreach($listID as $idgame) {
             PreInvoice::where('username','=',$username)->where('idgame','=',$idgame)->delete();
+            $game = new GameHaving();
+            $game->username = $username;
+            $game->idgame = $idgame;
+            $game->type = "buy";
+            $game->timehaving = \Carbon\Carbon::now('Asia/Ho_Chi_Minh');
+            $game->save();
         }
+        return true;
+    }
+    public static function deleteAllPreInvoiceGame($idgame) {
+        \App\PreInvoice::where('idgame','=',$idgame)->delete();
         return true;
     }
 }

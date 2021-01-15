@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{{asset('asset/boostrap/dist/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('asset/css-hamburgers/dist/hamburgers.css')}}">
     <link rel="stylesheet" href="{{asset('user_css/headermenu.css')}}">
-    <link rel="stylesheet" href="{{asset('user_css/headermenu.css')}}">
     <link rel="stylesheet" href="{{asset('user_css/reset.css')}}">
     <link rel="stylesheet" href="{{asset('user_css/style.css')}}">
     <link rel="stylesheet" href="{{asset('user_css/util.css')}}">
@@ -37,13 +36,9 @@
                         <form action="{{route('searchGame')}}" accept-charset="UTF-8" method="GET" id="search-block-form">
                             <div class="form-item form-type-textfield form-item-search-block-form">
                                 <label for="edit-search-block-form--2" class="element-invisible">Search</label>
-                                <input type="text" placeholder="Nhập Tên Game Cần Tìm" id="edit-search-block-form--2"
-                                    name="namesearch" size="15" maxlength="128"
-                                    class=" form-autocomplete ui-autocomplete-processed ui-autocomplete-input"
-                                    data-sa-theme="basic-green">
+                                <input type="text" placeholder="Nhập Tên Game Cần Tìm" id="edit-search-block-form--2" name="namesearch" size="15" maxlength="128" class=" form-autocomplete ui-autocomplete-processed ui-autocomplete-input" data-sa-theme="basic-green">
                                 <span role="status" class="ui-helper-hidden-accessible"></span>
-                                <ul style="display: none;"
-                                    class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all">
+                                <ul style="display: none;" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all">
                                 </ul>
                             </div>
                             <div class="form-actions form-wrapper" id="edit-actions">
@@ -69,22 +64,22 @@
                     </a>
                     <ul id="menu-header-main-menu" class="menu-header-main-menu responsive-menu links">
                         <li class="menu-item menu-item-primary first">
-                            <a href="allgame.php" title="Games">
+                            <a href="javascript:void(0)" title="Games">
                                 Games
                             </a>
                         </li>
                         <li class="menu-item menu-item-primary">
-                            <a href="" title="Hot">
+                            <a href="javascript:void(0)" title="Hot">
                                 Hot
                             </a>
                         </li>
                         <li class="menu-item menu-item-primary">
-                            <a href="">
+                            <a href="javascript:void(0)">
                                 Multiplayer
                             </a>
                         </li>
                         <li class="menu-item menu-item-primary">
-                            <a href="">
+                            <a href="javascript:void(0)">
                                 Game Pass
                             </a>
                         </li>
@@ -106,12 +101,12 @@
                         </li>
                         @else
                         <li class='menu-item menu-item-primary'>
-                            <a href='account'>
+                            <a href="{{ URL::to('user/' . session()->get('username')) }}">
                                 Tài Khoản
                             </a>
                         </li>
                         <li class='menu-item menu-item-primary'>
-                            <a href='logout'>
+                            <a href='{{URL::to("logout")}}'>
                                 Đăng Xuất
                             </a>
                         </li>
@@ -127,19 +122,13 @@
             <div class="mobile-menu animate__animated" style="display: none;">
                 <div class="search">
                     <div class="searh_bx">
-                        <form autocomplete="off" action="/all-games" method="post" id="search-block-form--2"
-                            accept-charset="UTF-8">
+                        <form autocomplete="off" action="/all-games" method="post" id="search-block-form--2" accept-charset="UTF-8">
                             <div>
                                 <div class="form-item form-type-textfield form-item-search-block-form">
                                     <label class="element-invisible" for="edit-search-block-form--4">Search </label>
-                                    <input title="Enter the terms you wish to search for." autocomplele="new-search"
-                                        placeholder="Search for a game" type="text" id="edit-search-block-form--4"
-                                        name="search_block_form" value="" size="15" maxlength="128" class="form-text">
+                                    <input title="Enter the terms you wish to search for." autocomplele="new-search" placeholder="Search for a game" type="text" id="edit-search-block-form--4" name="search_block_form" value="" size="15" maxlength="128" class="form-text">
                                 </div>
-                                <div class="form-actions form-wrapper" id="edit-actions--2"><input type="submit"
-                                        id="edit-submit--2" name="op" value="" class="form-submit"></div><input
-                                    type="hidden" name="form_build_id"
-                                    value="form-iAPQUatCxiLbQRMl7t-OgG9HIdv4XFD1ObzyUQxrCN8">
+                                <div class="form-actions form-wrapper" id="edit-actions--2"><input type="submit" id="edit-submit--2" name="op" value="" class="form-submit"></div><input type="hidden" name="form_build_id" value="form-iAPQUatCxiLbQRMl7t-OgG9HIdv4XFD1ObzyUQxrCN8">
                                 <input type="hidden" name="form_id" value="search_block_form">
                             </div>
                         </form>
@@ -150,15 +139,12 @@
                         <div class="rt_buttins">
                             <ul class="menu">
                                 <ul class="menu">
-                                    <li class="first leaf games mid-2214"><a href="/all-games" title="games"
-                                            class="active">Games</a></li>
-                                    <li class="leaf hot mid-2839"><a href="/hot-games/index.jsp" title="">Hot</a></li>
-                                    <li class="leaf multiplayer mid-2216"><a href="/multiplayer-games.jsp"
-                                            title="">Multiplayer</a></li>
-                                    <li class="leaf game-pass mid-5715"><a href="/game-pass">Game Pass</a></li>
-                                    <li class="leaf register mid-2156"><a href="/account/register">Register</a></li>
-                                    <li class="last leaf login mid-2157"><a href="/account?current=all-games/index.jsp"
-                                            rel="nofollow">Login</a></li>
+                                    <li class="first leaf games mid-2214"><a href="javascript:void(0)" title="games" class="active">Games</a></li>
+                                    <li class="leaf hot mid-2839"><a href="javascript:void(0)" title="">Hot</a></li>
+                                    <li class="leaf multiplayer mid-2216"><a href="javascript:void(0)" title="">Multiplayer</a></li>
+                                    <li class="leaf game-pass mid-5715"><a href="javascript:void(0)">Game Pass</a></li>
+                                    <li class="leaf register mid-2156"><a href="javascript:void(0)">Register</a></li>
+                                    <li class="last leaf login mid-2157"><a href="javascript:void(0)" rel="nofollow">Login</a></li>
                                 </ul>
                             </ul>
                         </div>
@@ -168,14 +154,12 @@
             <div id="block-views-tags-block" class="new-carao block block-views block-odd first clearfix">
                 <div class="owl-carousel owl-custom owl-theme owl-loaded owl-drag">
                     <div class="owl-stage-outer">
-                        <div class="owl-stage"
-                            style="transform: translate3d(-4816.625, 0px, 0px); transition: all 0.25s ease 0s; width: 21010px;">
+                        <div class="owl-stage" style="transform: translate3d(-4816.625, 0px, 0px); transition: all 0.25s ease 0s; width: 21010px;">
                             @foreach($danhmuc as $danhmuc)
                             <div class="owl-item cloned" style="width: 155.375px; margin-right: 5px;">
                                 <a href="{{ URL::to('tag/' . $danhmuc->iddanhmuc) }}" class="item caro-itm media">
                                     <div class="media-left">
-                                        <img typeof="foaf:Image" src="{{$danhmuc->imgdanhmuc}}" width="68" height="60"
-                                            alt="">
+                                        <img typeof="foaf:Image" src="{{$danhmuc->imgdanhmuc}}" width="68" height="60" alt="">
                                     </div>
                                     <div class="media-body">
                                         {{$danhmuc->tendanhmuc}}
@@ -193,11 +177,10 @@
                         </div>
                         <div class="media-body">
                             <h4 class="media-heading">More</h4>
-                            <p>30+ Categories</p>
+                            <p>Categories</p>
                         </div>
                     </div>
-                    <a href="{{URL::to('all-categories')}}"
-                        class="abs_button toggle-menu menu-left push-body jPushMenuBtn"></a>
+                    <a href="{{URL::to('all-categories')}}" class="abs_button toggle-menu menu-left push-body jPushMenuBtn"></a>
                 </div>
             </div>
         </div>
@@ -229,18 +212,17 @@
         <a href="javascript:void(0)" class="checkout-btn">Thanh toán</a>
         @else
         <div class="wrap-login100">
-				<div style="margin: auto;" class="login100-pic js-tilt" data-tilt>
-					<img src="{{asset('image/img-01.png')}}" alt="IMG">
-                    <div style="width: 100%;display: flex;flex-direction: column;padding: 20px;">
-                        <a href="{{URL::to('login')}}" type="button" class="btn btn-success">Đăng Nhập</a>
-                        <a href="{{URL::to('register')}}" style="margin-top: 15px;" type="button" class="btn btn-danger">Đăng Ký</a>
-                    </div>
-				</div>
-			</div>
+            <div style="margin: auto;" class="login100-pic js-tilt" data-tilt>
+                <img src="{{asset('image/img-01.png')}}" alt="IMG">
+                <div style="width: 100%;display: flex;flex-direction: column;padding: 20px;">
+                    <a href="{{URL::to('login')}}" type="button" class="btn btn-success">Đăng Nhập</a>
+                    <a href="{{URL::to('register')}}" style="margin-top: 15px;" type="button" class="btn btn-danger">Đăng Ký</a>
+                </div>
+            </div>
+        </div>
         @endif
     </div>
-    <footer>
-        <script>
+    <script>
         $(document).ready(function() {
             function loadPreInvoice(username) {
                 $.ajax({
@@ -276,10 +258,12 @@
                     success: function(data) {
                         $('.coinhave').html(data['coinhave'] + " Coin");
                         $('.precoin').html(data['precoin'] + " Coin");
-                        if (data['coinminus'] > 0) {
+                        if (data['coinminus'] >= 0) {
                             $('.coinreturn').html(data['coinminus'] + " Coin");
+                            $('.checkout-btn').css('display', "block");
                         } else {
                             $('.coinreturn').html('Không đủ COIN để mua hàng');
+                            $('.checkout-btn').css('display', "none");
                         }
                     }
                 })
@@ -311,6 +295,7 @@
                         alert(data);
                         loadPreInvoice(username);
                         loadCoin(username);
+                        location.reload();
                     }
                 })
             }
@@ -332,12 +317,12 @@
                     return $(this).data("idgame");
                 }).get();
                 var listIDArray = dataList.splice(',');
-                buy(username,listIDArray);
+                buy(username, listIDArray);
             })
 
         })
-        </script>
-        <script>
+    </script>
+    <script>
         jQuery(document).ready(function($) {
             //if you change this breakpoint in the style.css file (or _layout.scss if you use SASS), don't forget to update this value as well
             var $L = 1200,
@@ -429,49 +414,49 @@
                 $navigation.insertAfter('header');
             }
         }
-        </script>
-    </footer>
+    </script>
     <script>
-    $(document).ready(function() {
-        $('.owl-carousel').owlCarousel({
-            margin: 10,
-            loop: true,
-            reponsiveClass: true,
-            dots: false,
-            items: '{{ $danhmuc->count() }}',
-            autoplay: true,
-            autoplayTimeout: 1000,
-        })
-        $(".owl-carousel").owlCarousel();
-        $(".hamburger").on('click', function() {
-            if ($('.hamburger').hasClass('is-active')) {
-                $('.mobile-menu').removeClass('animate__bounceIn');
-                $('.mobile-menu').addClass('animate__bounceOut');
-                $('.mobile-menu').css('display', 'none');
-            } else {
-                $('.mobile-menu').removeClass('animate__bounceOut');
-                $('.mobile-menu').css('display', 'block');
-                $('.mobile-menu').addClass('animate__bounceIn');
-                $('.moblie-menu').removeClass('is-active');
-            }
-        });
-        var forEach = function(t, o, r) {
-            if ("[object Object]" === Object.prototype.toString.call(t))
-                for (var c in t) Object.prototype.hasOwnProperty.call(t, c) && o.call(r, t[c], c, t);
-            else
-                for (var e = 0, l = t.length; l > e; e++) o.call(r, t[e], e, t)
-        };
-
-        var hamburgers = document.querySelectorAll(".hamburger");
-        if (hamburgers.length > 0) {
-            forEach(hamburgers, function(hamburger) {
-                hamburger.addEventListener("click", function() {
-                    this.classList.toggle("is-active");
-                }, false);
+        $(document).ready(function() {
+            $('.owl-carousel').owlCarousel({
+                margin: 10,
+                loop: true,
+                reponsiveClass: true,
+                dots: false,
+                items: '{{ $danhmuc->count() }}',
+                autoplay: true,
+                autoplayTimeout: 1000,
+                autoHeight: true
+            })
+            $(".owl-carousel").owlCarousel();
+            $(".hamburger").on('click', function() {
+                if ($('.hamburger').hasClass('is-active')) {
+                    $('.mobile-menu').removeClass('animate__bounceIn');
+                    $('.mobile-menu').addClass('animate__bounceOut');
+                    $('.mobile-menu').css('display', 'none');
+                } else {
+                    $('.mobile-menu').removeClass('animate__bounceOut');
+                    $('.mobile-menu').css('display', 'block');
+                    $('.mobile-menu').addClass('animate__bounceIn');
+                    $('.moblie-menu').removeClass('is-active');
+                }
             });
-        }
+            var forEach = function(t, o, r) {
+                if ("[object Object]" === Object.prototype.toString.call(t))
+                    for (var c in t) Object.prototype.hasOwnProperty.call(t, c) && o.call(r, t[c], c, t);
+                else
+                    for (var e = 0, l = t.length; l > e; e++) o.call(r, t[e], e, t)
+            };
 
-    });
+            var hamburgers = document.querySelectorAll(".hamburger");
+            if (hamburgers.length > 0) {
+                forEach(hamburgers, function(hamburger) {
+                    hamburger.addEventListener("click", function() {
+                        this.classList.toggle("is-active");
+                    }, false);
+                });
+            }
+
+        });
     </script>
 </body>
 

@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{{asset('admin_css/alldanhmuc.css')}}">
 </head>
 
 <body>
@@ -28,7 +27,7 @@
                                 <div class="row justify-content-between top-information">
                                     <div class="dataTables_length" id="hoverable-data-table_length"></div>
                                     <div id="hoverable-data-table_filter" class="dataTables_filter">
-                                        <a href="#addCategory" id=""  class="btn btn-success"
+                                        <a href="#addCategory" id="btn-add-category" class="btn btn-success"
                                             data-toggle="modal"><span>Thêm danh mục</span></a>
                                     </div>
                                 </div>
@@ -56,156 +55,28 @@
                                     </thead>
 
                                     <tbody>
+                                        @foreach($allcategories as $category)
                                         <tr role="row" class="odd">
                                             <td class="sorting_1"
-                                                style="color: #1b223c;font-weight: 500;font-size: 14px;">1</td>
-                                            <td colspan="2">Hành động</td>
+                                                style="color: #1b223c;font-weight: 500;font-size: 14px;">
+                                                {{$category->iddanhmuc}}</td>
+                                            <td colspan="2">{{$category->tendanhmuc}}</td>
+                                            @if($category->iddanhmuc!=33) 
                                             <td>
-                                                <a href="#updateCategory" class="edit" data-toggle="modal"><i
+                                                <a data-iddm="{{$category->iddanhmuc}}" href="#updateCategory"
+                                                    class="edit btn-update-category" data-toggle="modal"><i
                                                         class="material-icons" data-toggle="tooltip"
                                                         title="Edit">&#xE254;</i></a>
                                             </td>
                                             <td>
-                                                <a href="#deleteCategory" class="delete" data-toggle="modal"><i
+                                                <a data-iddm="{{$category->iddanhmuc}}" href="#deleteCategory"
+                                                    class="delete btn-delete-category" data-toggle="modal"><i
                                                         class="material-icons" data-toggle="tooltip"
                                                         title="Delete">&#xE872;</i></a>
                                             </td>
+                                            @endif
                                         </tr>
-                                        <tr role="row" class="odd">
-                                            <td class="sorting_1"
-                                                style="color: #1b223c;font-weight: 500;font-size: 14px;">2</td>
-                                            <td colspan="2">Phiêu Lưu</td>
-                                            <td>
-                                                <a href="#updateCategory" class="edit" data-toggle="modal"><i
-                                                        class="material-icons" data-toggle="tooltip"
-                                                        title="Edit">&#xE254;</i></a>
-                                            </td>
-                                            <td>
-                                                <a href="#deleteCategory" class="delete" data-toggle="modal"><i
-                                                        class="material-icons" data-toggle="tooltip"
-                                                        title="Delete">&#xE872;</i></a>
-                                            </td>
-                                        </tr>
-                                        <tr role="row" class="odd">
-                                            <td class="sorting_1"
-                                                style="color: #1b223c;font-weight: 500;font-size: 14px;">3</td>
-                                            <td colspan="2">Chiến Thuật</td>
-                                            <td>
-                                                <a href="#updateCategory" class="edit" data-toggle="modal"><i
-                                                        class="material-icons" data-toggle="tooltip"
-                                                        title="Edit">&#xE254;</i></a>
-                                            </td>
-                                            <td>
-                                                <a href="#deleteCategory" class="delete" data-toggle="modal"><i
-                                                        class="material-icons" data-toggle="tooltip"
-                                                        title="Delete">&#xE872;</i></a>
-                                            </td>
-                                        </tr>
-                                        <tr role="row" class="odd">
-                                            <td class="sorting_1"
-                                                style="color: #1b223c;font-weight: 500;font-size: 14px;">4</td>
-                                            <td colspan="2">Thể Thao</td>
-                                            <td>
-                                                <a href="#updateCategory" class="edit" data-toggle="modal"><i
-                                                        class="material-icons" data-toggle="tooltip"
-                                                        title="Edit">&#xE254;</i></a>
-                                            </td>
-                                            <td>
-                                                <a href="#deleteCategory" class="delete" data-toggle="modal"><i
-                                                        class="material-icons" data-toggle="tooltip"
-                                                        title="Delete">&#xE872;</i></a>
-                                            </td>
-                                        </tr>
-                                        <tr role="row" class="odd">
-                                            <td class="sorting_1"
-                                                style="color: #1b223c;font-weight: 500;font-size: 14px;">5</td>
-                                            <td colspan="2">Bắn súng</td>
-                                            <td>
-                                                <a href="#updateCategory" class="edit" data-toggle="modal"><i
-                                                        class="material-icons" data-toggle="tooltip"
-                                                        title="Edit">&#xE254;</i></a>
-                                            </td>
-                                            <td>
-                                                <a href="#deleteCategory" class="delete" data-toggle="modal"><i
-                                                        class="material-icons" data-toggle="tooltip"
-                                                        title="Delete">&#xE872;</i></a>
-                                            </td>
-                                        </tr>
-                                        <tr role="row" class="odd">
-                                            <td class="sorting_1"
-                                                style="color: #1b223c;font-weight: 500;font-size: 14px;">6</td>
-                                            <td colspan="2">Góc nhìn thứ nhất</td>
-                                            <td>
-                                                <a href="#updateCategory" class="edit" data-toggle="modal"><i
-                                                        class="material-icons" data-toggle="tooltip"
-                                                        title="Edit">&#xE254;</i></a>
-                                            </td>
-                                            <td>
-                                                <a href="#deleteCategory" class="delete" data-toggle="modal"><i
-                                                        class="material-icons" data-toggle="tooltip"
-                                                        title="Delete">&#xE872;</i></a>
-                                            </td>
-                                        </tr>
-                                        <tr role="row" class="odd">
-                                            <td class="sorting_1"
-                                                style="color: #1b223c;font-weight: 500;font-size: 14px;">7</td>
-                                            <td colspan="2">Hoạt hình</td>
-                                            <td>
-                                                <a href="#updateCategory" class="edit" data-toggle="modal"><i
-                                                        class="material-icons" data-toggle="tooltip"
-                                                        title="Edit">&#xE254;</i></a>
-                                            </td>
-                                            <td>
-                                                <a href="#deleteCategory" class="delete" data-toggle="modal"><i
-                                                        class="material-icons" data-toggle="tooltip"
-                                                        title="Delete">&#xE872;</i></a>
-                                            </td>
-                                        </tr>
-                                        <tr role="row" class="odd">
-                                            <td class="sorting_1"
-                                                style="color: #1b223c;font-weight: 500;font-size: 14px;">8</td>
-                                            <td colspan="2">Đua xe</td>
-                                            <td>
-                                                <a href="#updateCategory" class="edit" data-toggle="modal"><i
-                                                        class="material-icons" data-toggle="tooltip"
-                                                        title="Edit">&#xE254;</i></a>
-                                            </td>
-                                            <td>
-                                                <a href="#deleteCategory" class="delete" data-toggle="modal"><i
-                                                        class="material-icons" data-toggle="tooltip"
-                                                        title="Delete">&#xE872;</i></a>
-                                            </td>
-                                        </tr>
-                                        <tr role="row" class="odd">
-                                            <td class="sorting_1"
-                                                style="color: #1b223c;font-weight: 500;font-size: 14px;">9</td>
-                                            <td colspan="2">Thẻ bài</td>
-                                            <td>
-                                                <a href="#updateCategory" class="edit" data-toggle="modal"><i
-                                                        class="material-icons" data-toggle="tooltip"
-                                                        title="Edit">&#xE254;</i></a>
-                                            </td>
-                                            <td>
-                                                <a href="#deleteCategory" class="delete" data-toggle="modal"><i
-                                                        class="material-icons" data-toggle="tooltip"
-                                                        title="Delete">&#xE872;</i></a>
-                                            </td>
-                                        </tr>
-                                        <tr role="row" class="odd">
-                                            <td class="sorting_1"
-                                                style="color: #1b223c;font-weight: 500;font-size: 14px;">10</td>
-                                            <td colspan="2">Giải đố</td>
-                                            <td>
-                                                <a href="#updateCategory" class="edit" data-toggle="modal"><i
-                                                        class="material-icons" data-toggle="tooltip"
-                                                        title="Edit">&#xE254;</i></a>
-                                            </td>
-                                            <td>
-                                                <a href="#deleteCategory" class="delete" data-toggle="modal"><i
-                                                        class="material-icons" data-toggle="tooltip"
-                                                        title="Delete">&#xE872;</i></a>
-                                            </td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                                 <div class="clear"></div>
@@ -219,22 +90,24 @@
     <div id="addCategory" class="modal fade" style="">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
-                    <div class="modal-header">
-                        <h4 class="modal-title">Thêm danh mục</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div class="modal-header">
+                    <h4 class="modal-title">Thêm danh mục</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Tên danh mục</label>
+                        <input type="text" class="form-control edit-category-name-add" required>
                     </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>Tên danh mục</label>
-                            <input type="text" class="form-control edit-category-add" required>
-                        </div>
+                    <div class="form-group">
+                        <label>Hình danh mục</label>
+                        <input type="text" class="form-control edit-category-image-add" required>
                     </div>
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-success add-category-btn" value="Add">
-                    </div>
-                </form>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <a type="submit" class="btn btn-success add-category-btn" style="color:white">Add</a>
+                </div>
             </div>
         </div>
     </div>
@@ -242,22 +115,31 @@
     <div id="updateCategory" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
-                    <div class="modal-header">
-                        <h4 class="modal-title">Sửa danh mục</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>Tên danh mục</label>
-                            <input type="text" class="form-control edit-category-update" value="Hành động" required>
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Sửa danh mục</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Tên danh mục</label>
+                        <div id="edit-name">
+
                         </div>
+
                     </div>
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-info update-category-btn" value="Save">
+                    <div class="form-group">
+                        <label>Hình danh mục</label>
+                        <div id="edit-img">
+
+                        </div>
+
                     </div>
-                </form>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <a href="javascript:void(0)" type="submit" class="btn btn-info update-category-btn">Save</a>
+                </div>
             </div>
         </div>
     </div>
@@ -265,34 +147,115 @@
     <div id="deleteCategory" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
-                    <div class="modal-header">
-                        <h4 class="modal-title">Xoá danh mục</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Bạn có chắc muốn xoá danh mục này?</p>
-                        <p class="text-warning"><small>Việc xoá này không thể hoàn lại.</small></p>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-danger" value="Delete">
-                    </div>
-                </form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Xoá danh mục <span id="tendanhmuc"></span></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có chắc muốn xoá danh mục này?</p>
+                    <p class="text-warning"><small>Việc xoá này không thể hoàn lại.Tất cả các game thuộc danh mục này sẽ
+                            chuyển về danh mục Other.</small></p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <a type="submit" class="btn btn-danger delete-category-btn">Delete</a>
+                </div>
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $('#addCategory').on('click','.add-category-btn',function() {
-                var namecategory = $('.edit-category-add').val();
-                alert(namecategory);
+    $(document).ready(function() {
+        function addDanhMuc(tendanhmuc, imgdanhmuc) {
+            $.ajax({
+                url: "{{route('addDanhMuc')}}",
+                method: "POST",
+                data: {
+                    _token: '{{csrf_token()}}',
+                    tendanhmuc: tendanhmuc,
+                    imgdanhmuc: imgdanhmuc
+                },
+                success: function(data) {
+                    alert(data);
+                    location.reload();
+                }
             })
-            $('#updateCategory').on('click','.update-category-btn',function() {
-                var namecategory = $('.edit-category-update').val();
-                alert(namecategory);
+        }
+        $('#btn-add-category').on('click', function() {
+            $('#addCategory').on('click', '.add-category-btn', function() {
+                var namecategory = $('.edit-category-name-add').val();
+                var imgcategory = $('.edit-category-image-add').val();
+                addDanhMuc(namecategory, imgcategory);
             })
         })
+
+        function getTenDanhMuc(iddm) {
+            $.ajax({
+                url: "{{route('getDanhMuc')}}",
+                method: "POST",
+                data: {
+                    _token: '{{csrf_token()}}',
+                    iddm: iddm
+                },
+                success: function(data) {
+                    $("#edit-name").html(
+                        '<input type="text" class="form-control edit-category-name-edit" value="' +
+                        data.tendanhmuc + '" required>');
+                    $("#edit-img").html(
+                        '<input type="text" class="form-control edit-category-img-edit" value="' +
+                        data.imgdanhmuc + '" required>');
+                }
+            })
+        }
+
+        function updateDanhMuc(iddm, tenmoi, imgdanhmuc) {
+            $.ajax({
+                url: "{{route('updateDanhMuc')}}",
+                method: "POST",
+                data: {
+                    _token: '{{csrf_token()}}',
+                    iddm: iddm,
+                    tenmoi: tenmoi,
+                    imgdanhmuc: imgdanhmuc
+                },
+                success: function(data) {
+                    alert(data);
+                    location.reload();
+                }
+            })
+        }
+
+        function deleteDanhMuc(iddm) {
+            $.ajax({
+                url: "{{route('deleteDanhMuc')}}",
+                method: "post",
+                data: {
+                    _token: '{{csrf_token()}}',
+                    iddm: iddm,
+                },
+                success: function(data) {
+                    alert(data);
+                    location.reload();
+                }
+            })
+        }
+        $('.btn-update-category').on('click', function() {
+            var id = $(this).data("iddm");
+            getTenDanhMuc(id);
+            $('#updateCategory').on('click', '.update-category-btn', function() {
+                var namecategory = $('.edit-category-name-edit').val();
+                var imgcategory = $('.edit-category-img-edit').val();
+                updateDanhMuc(id, namecategory, imgcategory);
+            })
+        })
+        $('.btn-delete-category').on('click', function() {
+            var id = $(this).data("iddm");
+            getTenDanhMuc(id);
+            $('#deleteCategory').on('click', '.delete-category-btn', function() {
+                deleteDanhMuc(id);
+            })
+        })
+    })
     </script>
     @stop
 
