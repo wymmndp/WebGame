@@ -37,8 +37,7 @@ Route::get('/searchGame',['uses'=>'ActionUserController@searchGame','as'=>'searc
 Route::get('/game/{idgame}',[ActionUserController::class, 'viewDetailGame']);
 //play game
 Route::get('/game/play/{idgame}',[ActionUserController::class, 'playGame']);
-//test
-Route::get('/test', [ActionUserController::class, 'test']);
+
 //detailuser
 Route::get('/user/{username}', [ActionUserController::class, 'getDetailUser']);
 //upload your game
@@ -69,8 +68,9 @@ Route::group(['prefix'=>'admin'], function() {
     Route::get('/allgame', [AdminController::class, 'getAllGame']);
     Route::get('/detailuser/{username}', [AdminController::class, 'getSeeUser']);
     Route::get('/detailgame/{idgame}',[AdminController::class,'getDetailGame']);
-    Route::get('/test',[AdminController::class,'test']);
     Route::get('/logout', [LogoutController::class, 'logoutadmin']);
+    Route::get('/userupgame',[AdminController::class,'getUserUpGame']);
+    Route::get('/test',[AdminController::class,'test']);
     //Ajax
     Route::post('getDanhMuc',['uses'=>'AdminController@getDanhMuc','as'=>'getDanhMuc']);
     Route::post('addDanhMuc',['uses'=>'AdminController@addDanhMuc','as'=>'addDanhMuc']);
@@ -84,5 +84,9 @@ Route::group(['prefix'=>'admin'], function() {
     Route::post('updategame',['uses'=>'AdminController@updategame','as'=>'updategame']);
     Route::post('deletegame',['uses'=>'AdminController@deletegame','as'=>'deletegame']);
     Route::post('giftgame',['uses'=>'AdminController@giftgame','as'=>'giftgame']);
-    Route::get  ('giftcoin',['uses'=>'AdminController@giftcoin','as'=>'giftcoin']);
+    Route::get('giftcoin',['uses'=>'AdminController@giftcoin','as'=>'giftcoin']);
+    Route::post('sendMailSuccess',['uses'=>'AdminController@sendMailSuccess','as'=>'sendMailSuccess']);
+    Route::post('sendMailRefuse',['uses'=>'AdminController@sendMailRefuse','as'=>'sendMailRefuse']);
+    Route::post('getInformationOfGame',['uses'=>'AdminController@getInformationOfGame','as'=>'getInformationOfGame']);
+    Route::post('deleteGameOfUserUpload',['uses'=>'AdminController@deleteGameOfUserUpload','as'=>'deleteGameOfUserUpload']);
 });

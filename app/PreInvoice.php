@@ -27,7 +27,6 @@ class PreInvoice extends Model implements AuthenticatableContract
         $precoin = \App\PreInvoice::join('game', 'game.id', '=', 'pre_invoices.idgame')->where('username','=',$username)->sum('coin');
         $account->coinhave = $coinhave-$precoin;
         $account->save();
-        $gamehaving = new GameHaving();
         foreach($listID as $idgame) {
             PreInvoice::where('username','=',$username)->where('idgame','=',$idgame)->delete();
             $game = new GameHaving();

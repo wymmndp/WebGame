@@ -62,6 +62,7 @@ class Game extends Model
         $game = Game::find($idgame);
         if(\App\Comment::deleteAllCommentInGame($idgame) && \App\PreInvoice::deleteAllPreInvoiceGame($idgame) && \App\GameHaving::deleteGame($idgame)) {
             $game->delete();
+            return true;
         }
     }
 }

@@ -6,6 +6,7 @@ use App\DanhMuc;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Response;
 
 class AdminController extends Controller
@@ -183,6 +184,48 @@ class AdminController extends Controller
         }
     }
     public function test() {
-        dd(\App\GameHaving::deleteGame(2));
+        $account = \App\Account::find('duongleha');
+        $detail = [
+            'username'=> $account->username,
+        ];
+        Mail::send('admin.layout.refuse',["account"=>$account],
+        function($message) use ($account){
+            $message->to($account->email,'User')->subject('test');
+        });
+    }
+    public function getUserUpGame() {
+        if(!session()->has('admin')) {
+            return redirect('admin/login');
+        }
+        else {
+            $allgame = \App\UserUpGame::getAll();
+            return view('admin.layout.allgameofuser',['allgame'=>$allgame]);
+        }
+    }
+    public function sendMailSuccess(Request $request) {
+        $username = $request->username;
+        $account = \App\Account::find($username);
+        Mail::send('admin.layout.success',["account"=>$account],
+        function($message) use ($account){
+            $message->to($account->email,'User')->subject('Game đã được chấp thuận');
+        });
+    }
+    public function sendMailRefuse(Request $request) {
+        $username = $request->username;
+        $account = \App\Account::find($username);
+        Mail::send('admin.layout.refuse',["account"=>$account],
+        function($message) use ($account){
+            $message->to($account->email,'User')->subject('Game không được chấp thuận');
+        });
+    }
+    public function getInformationOfGame(Request $request) {
+        $idgame = $request->idgame;
+        return \App\UserUpGame::getGameInformation($idgame)->toArray();
+    }
+    public function deleteGameOfUserUpload(Request $request) {
+        $idgame = $request->idgame;
+        if(\App\UserUpGame::deleteGame($idgame)) {
+            return true;
+        } else return false;
     }
 }

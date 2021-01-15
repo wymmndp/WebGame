@@ -242,7 +242,7 @@
                     success: function(data) {
                         if (data == 1) {
                             alert('Xoá game thành công');
-                            location.reload();
+                            window.location=document.referrer;
                         }
                     }
                 })

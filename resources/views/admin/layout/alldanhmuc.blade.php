@@ -166,6 +166,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <script>
     $(document).ready(function() {
+        // add danh muc
         function addDanhMuc(tendanhmuc, imgdanhmuc) {
             $.ajax({
                 url: "{{route('addDanhMuc')}}",
@@ -188,7 +189,7 @@
                 addDanhMuc(namecategory, imgcategory);
             })
         })
-
+        // support 
         function getTenDanhMuc(iddm) {
             $.ajax({
                 url: "{{route('getDanhMuc')}}",
@@ -207,7 +208,7 @@
                 }
             })
         }
-
+        // update danhmuc
         function updateDanhMuc(iddm, tenmoi, imgdanhmuc) {
             $.ajax({
                 url: "{{route('updateDanhMuc')}}",
@@ -224,7 +225,16 @@
                 }
             })
         }
-
+        $('.btn-update-category').on('click', function() {
+            var id = $(this).data("iddm");
+            getTenDanhMuc(id);
+            $('#updateCategory').on('click', '.update-category-btn', function() {
+                var namecategory = $('.edit-category-name-edit').val();
+                var imgcategory = $('.edit-category-img-edit').val();
+                updateDanhMuc(id, namecategory, imgcategory);
+            })
+        })
+        // delete
         function deleteDanhMuc(iddm) {
             $.ajax({
                 url: "{{route('deleteDanhMuc')}}",
@@ -239,15 +249,6 @@
                 }
             })
         }
-        $('.btn-update-category').on('click', function() {
-            var id = $(this).data("iddm");
-            getTenDanhMuc(id);
-            $('#updateCategory').on('click', '.update-category-btn', function() {
-                var namecategory = $('.edit-category-name-edit').val();
-                var imgcategory = $('.edit-category-img-edit').val();
-                updateDanhMuc(id, namecategory, imgcategory);
-            })
-        })
         $('.btn-delete-category').on('click', function() {
             var id = $(this).data("iddm");
             getTenDanhMuc(id);

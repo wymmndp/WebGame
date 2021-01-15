@@ -95,6 +95,12 @@
                                             <span class="nav-text">Thêm Game</span>
                                         </a>
                                     </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="{{URL::to('admin/userupgame')}}">
+                                            <span class="nav-text">Game User Up</span>
+
+                                        </a>
+                                    </li>
                                 </div>
                             </ul>
                         </li>
