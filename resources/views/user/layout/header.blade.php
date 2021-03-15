@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang Chủ</title>
-    <link rel="stylesheet" href="{{asset('asset/boostrap/dist/css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{asset('asset/css-hamburgers/dist/hamburgers.css')}}">
+    <link rel="stylesheet" href="{{asset('asset/bootstrap/dist/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('asset/hamburgers-master/dist/hamburgers.css')}}">
     <link rel="stylesheet" href="{{asset('user_css/headermenu.css')}}">
     <link rel="stylesheet" href="{{asset('user_css/reset.css')}}">
     <link rel="stylesheet" href="{{asset('user_css/style.css')}}">
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="{{asset('asset/jquery/dist/jquery.js')}}"></script>
     <script src="{{asset('asset/jquery-validation/dist/jquery.validate.js')}}"></script>
-    <script src="{{asset('asset/OwlCarousel2-2.3.4/dist/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('asset/OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/dist/owl.carousel.min.js')}}"></script>
     <script src="{{asset('js/mordernizr.js')}}"></script>
 </head>
 

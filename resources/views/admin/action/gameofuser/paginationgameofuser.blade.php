@@ -15,7 +15,7 @@
     <tbody>
         @foreach($allgame as $game)
         <tr role="row" class="odd">
-            <td class="sorting_1" style="color: #1b223c;font-weight: 500;font-size: 14px;">{{$game->id}}</td>
+            <td class="sorting_1" style="color: #1b223c;font-weight: 500;font-size: 14px;">{{$game->idupgame}}</td>
             <td colspan="2"><a href="{{URL::to('admin/detailgame/' . $game->id)}}">{{$game->namegame}}</a></td>
             <td><a href="#playVideo" data-toggle="modal"><i class="fas fa-play" style="color: blue;" data-linkvideo="{{$game->videoplay}}"></i></a></td>
             <td colspan="2">{{$game->linkgame}}</td>
