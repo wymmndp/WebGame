@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', [ActionUserController::class, 'default']);
 //login
 Route::get('/login', [LoginController::class, 'getLoginForm']);
@@ -70,7 +71,7 @@ Route::group(['prefix'=>'admin'], function() {
     Route::get('/detailgame/{idgame}',[AdminController::class,'getDetailGame']);
     Route::get('/logout', [LogoutController::class, 'logoutadmin']);
     Route::get('/userupgame',[AdminController::class,'getUserUpGame']);
-    Route::get('/test',[AdminController::class,'test']);
+    
     //Ajax
     Route::post('getDanhMuc',['uses'=>'AdminController@getDanhMuc','as'=>'getDanhMuc']);
     Route::post('addDanhMuc',['uses'=>'AdminController@addDanhMuc','as'=>'addDanhMuc']);
@@ -89,4 +90,5 @@ Route::group(['prefix'=>'admin'], function() {
     Route::post('sendMailRefuse',['uses'=>'AdminController@sendMailRefuse','as'=>'sendMailRefuse']);
     Route::post('getInformationOfGame',['uses'=>'AdminController@getInformationOfGame','as'=>'getInformationOfGame']);
     Route::post('deleteGameOfUserUpload',['uses'=>'AdminController@deleteGameOfUserUpload','as'=>'deleteGameOfUserUpload']);
+   
 });

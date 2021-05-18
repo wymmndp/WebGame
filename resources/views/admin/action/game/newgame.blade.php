@@ -27,12 +27,13 @@
                         <div class="tab-content px-3 px-xl-5" id="myTabContent">
                             <div class="tab-pane fade show active" id="settings" role="tabpanel" aria-labelledby="settings-tab">
                                 <div class="mt-5">
-                                    <form id="new-game-form">
+                                    <form id="new-game-form"  action="{{route('addgame')}}" method="post" enctype="multipart/form-data">
+                                        @csrf
                                         <div class="form-group row mb-6">
                                             <label for="coverImage" class="col-sm-4 col-lg-2 col-form-label">Hình Game</label>
                                             <div class="col-sm-8 col-lg-10">
                                                 <div class="custom-file mb-1">
-                                                    <input type="file" name="files" multiple class="custom-file-input" id="file-img" required>
+                                                    <input type="file" name="imggame" multiple class="custom-file-input" id="file-img" required>
                                                     <label class="custom-file-label" for="coverImage">Choose
                                                         file...</label>
                                                     <div class="invalid-feedback">Example invalid custom file feedback
@@ -47,7 +48,7 @@
 
                                         <div class="form-group mb-4">
                                             <label for="description">Description</label>
-                                            <div class="description" id="description" require></div>
+                                            <input type="text" class="form-control" name="description" id="gameName" placeholder="Nhập tên game">
                                         </div>
 
                                         <div class="form-group mb-4">
@@ -57,7 +58,7 @@
 
                                         <div class="form-group mb-4">
                                             <label for="coin">Coin</label>
-                                            <input type="text" class="form-control" id="coin">
+                                            <input type="text" class="form-control" name="coin" id="coin">
                                         </div>
 
                                         <div class="row mb-2">
@@ -69,16 +70,16 @@
                                                             <option value="{{$danhmuc->iddanhmuc}}">{{$danhmuc->tendanhmuc}}</option>
                                                         @endforeach
                                                     </select>
+                                                    <input type="hidden" id="iddm" name="iddanhmuc" value=""/>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="d-flex justify-content-end mt-5">
-                                            <a href="#" id="newgame" type="submit" class="upload btn btn-primary mb-2 btn-pill">Add
+                                            <button href="javascript:void(0)" id="newgame" type="submit" class="upload btn btn-primary mb-2 btn-pill">Add
                                                 New Game
-                                            </a>
+                                            </button>
                                         </div>
-
                                     </form>
                                 </div>
                             </div>
@@ -88,27 +89,17 @@
             </div>
         </div>
     </div>
-    <script src="{{asset('asset/ckeditor5-build-classic/ckeditor.js')}}"></script>
-    <script>
-        var content = "";
-        ClassicEditor
-            .create(document.querySelector('#description'))
-            .then(editor => {
-                content = editor;
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
     <script>
         $(document).ready(function() {
             function filter_ptags_on_images($content) {
                 return $content.replace(/<p[^>]*>/g, '').replace(/<\/p>/g, '');
             }
+            $("#danhmucgame").change(function() {
+                var x = $("#danhmucgame option:selected" ).attr('value');
+                $("#iddm").val(x)
+            })
             var imgBase64 = "";
-
             function readFile() {
-
                 if (this.files && this.files[0]) {
                     imgBase64 = "";
                     var FR = new FileReader();
@@ -116,44 +107,42 @@
                     FR.addEventListener("load", function(e) {
                         document.getElementById("pre-img").src = e.target.result;
                         imgBase64 += e.target.result;
-                        alert(imgBase64);
                     });
-
                     FR.readAsDataURL(this.files[0]);
                 }
 
             }
             document.getElementById("file-img").addEventListener("change", readFile);
 
-            function newgame(imggame, namegame, description, coin,linkgame,iddanhmuc) {
-                $.ajax({
-                    url: "{{route('addgame')}}",
-                    method: "post",
-                    data: {
-                        _token: '{{csrf_token()}}',
-                        imggame: imggame,
-                        namegame: namegame,
-                        description: description,
-                        coin: coin,
-                        linkgame: linkgame,
-                        iddanhmuc: iddanhmuc
-                    },
-                    success: function(data) {
-                        if (data == 1) {
-                            alert('Thêm game thành công');
-                            location.reload();
-                        }
-                    }
-                })
-            }
-            $('#newgame').on('click', function() {
-                var namegame = $('#gameName').val();
-                var description = filter_ptags_on_images(content.getData());
-                var coin = $('#coin').val();
-                var linkgame = $('#gameLink').val();
-                var iddanhmuc = $("#danhmucgame option:selected" ).attr('value');
-                newgame(imgBase64, namegame, description, coin,linkgame,iddanhmuc);
-            })
+            // function newgame(imggame, namegame, description, coin,linkgame,iddanhmuc) {
+            //     $.ajax({
+            //         url: "{{route('addgame')}}",
+            //         method: "post",
+            //         data: {
+            //             _token: '{{csrf_token()}}',
+            //             imggame: imggame,
+            //             namegame: namegame,
+            //             description: description,
+            //             coin: coin,
+            //             linkgame: linkgame,
+            //             iddanhmuc: iddanhmuc
+            //         },
+            //         success: function(data) {
+            //             if (data == 1) {
+            //                 alert('Thêm game thành công');
+            //                 location.reload();
+            //             }
+            //         }
+            //     })
+            // }
+            // $('#newgame').on('click', function() {
+            //     var namegame = $('#gameName').val();
+            //     var description = filter_ptags_on_images(content.getData());
+            //     var coin = $('#coin').val();
+            //     var linkgame = $('#gameLink').val();
+            //     var iddanhmuc = $("#danhmucgame option:selected" ).attr('value');
+            //     newgame(imgBase64, namegame, description, coin,linkgame,iddanhmuc);
+            // })
         })
     </script>
     @stop

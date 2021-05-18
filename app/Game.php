@@ -41,7 +41,9 @@ class Game extends Model
         $game->linkgame = $linkgame;
         $game->coin = $coin;
         $game->iddm = $iddm;
+        $game->imgtoshow = "";
         $game->time = \Carbon\Carbon::now('Asia/Ho_Chi_Minh');
+        $game->sale = 0;
         $game->save();
         return true;
     }
@@ -64,5 +66,15 @@ class Game extends Model
             $game->delete();
             return true;
         }
+    }
+    public static function getListNewGame() {
+        return Game::orderBy("time","DESC")->get();
+    }
+    public static function getListGameFavorite($listID) {
+        $listGameFavorites = Game::whereIn("id",$listID)->get();
+        return $listGameFavorites;
+    }
+    public static function getListGameSale() {
+        return Game::where("sale",">","0")->get();
     }
 }

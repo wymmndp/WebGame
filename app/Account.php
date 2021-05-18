@@ -2,8 +2,6 @@
 
 namespace App;
 
-use Dotenv\Validator;
-use GuzzleHttp\Psr7\Request;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Model;
@@ -15,15 +13,17 @@ class Account extends Model implements AuthenticatableContract
     protected $primaryKey = 'username';
     public $timestamps = false;
     public $incrementing = false;
+    public static function apiLogin($username,$password) {
+        $acc = Account::where('username','=',$username)->where('password','=',$password)->first();
+        return $acc;
+    }
     public static function login($username,$password) {
         $account = Account::where('username','=',$username)->where('password','=',$password)->first();
         return $account;
     }
     public static function checkUsername($username) {
         $count = Account::where('username','=',$username)->count();
-        if($count>0) {
-            return true;
-        } else return false;
+        return $count;
     }
     // all account
     public static function getAllAccount() {
@@ -52,15 +52,20 @@ class Account extends Model implements AuthenticatableContract
         return $allSearchName;
     }
     public static function register($username,$password) {
-        $account = new Account();
-        $account->username = $username;
-        $account->password = $password;
-        $account->type = "member";
-        $account->allcoin = 0;
-        $account->coinhave = 0;
-        $account->time = \Carbon\Carbon::now('Asia/Ho_Chi_Minh');
-        $account->save();
-        return true;
+        $count = Account::checkUsername($username);
+        if($count>0) {
+            return false;
+        } else {
+            $account = new Account();
+            $account->username = $username;
+            $account->password = $password;
+            $account->type = "member";
+            $account->allcoin = 1000;
+            $account->coinhave = 1000;
+            $account->time = \Carbon\Carbon::now('Asia/Ho_Chi_Minh');
+            $account->save();
+            return true;
+        }
     }
     public static function getDetailAccount($username) {
         $detailAccount = Account::find($username);

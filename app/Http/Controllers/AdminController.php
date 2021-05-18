@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\DanhMuc;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
-use DB;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Str;
 
 class AdminController extends Controller
 {   
@@ -26,6 +25,12 @@ class AdminController extends Controller
         else {
             return view('admin.layout.dashboard');
         }
+    }
+    public function upfile() {
+        return view('admin.layout.upfile');
+    }
+    public function upfile1(Request $request) {
+        return view('admin.layout.upfile');
     }
     public function getNewGame() {
         if(!session()->has('admin')) {
@@ -119,7 +124,8 @@ class AdminController extends Controller
         $username = $request->username;
         $firstname = $request->firstname;
         $lastname = $request->lastname;
-        $avatar = $request->avatar;
+        $uploadedFileUrl = Cloudinary::upload($request->file("avatar")->getRealPath())->getSecurePath();
+        $avatar = $uploadedFileUrl;
         $email = $request->email;
         $oldpass = $request->oldpass;
         $newpass = $request->newpass;
@@ -140,14 +146,15 @@ class AdminController extends Controller
         return view('admin.action.game.paginationgame',compact($allgame),['allgame'=>$allgame]);
     }
     public function addgame(Request $request) {
-        $imggame = $request->imggame;
+        $uploadedFileUrl = Cloudinary::upload($request->file("imggame")->getRealPath())->getSecurePath();
+        $imggame = $uploadedFileUrl;
         $namegame = $request->namegame;
         $description = $request->description;
         $linkgame = $request->linkgame;
         $iddm = $request->iddanhmuc;
         $coin = $request->coin;
         if(\App\Game::newGame($imggame,$namegame,$description,$linkgame,$coin,$iddm)) {
-            return true;
+            return back();
         } else return false;
     }
     public function updategame(Request $request) {

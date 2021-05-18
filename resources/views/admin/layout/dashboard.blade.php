@@ -43,13 +43,14 @@
                             <div class="tab-pane fade active show" id="settings" role="tabpanel"
                                 aria-labelledby="settings-tab">
                                 <div class="tab-pane-content mt-5">
-                                    <form id="edit-information">
+                                    <form id="edit-information" action="{{route('updateInformation')}}" method="post" enctype="multipart/form-data">
+                                        @csrf
                                         <div class="form-group row mb-6">
                                             <label for="coverImage" class="col-sm-4 col-lg-2 col-form-label">User
                                                 Image</label>
                                             <div class="col-sm-8 col-lg-10">
                                                 <div class="custom-file mb-1">
-                                                    <input type="file" class="custom-file-input" id="coverImage">
+                                                    <input type="file" name="avatar" class="custom-file-input" id="coverImage">
                                                     <label class="custom-file-label" for="coverImage">Choose
                                                         file...</label>
                                                     <div class="invalid-feedback">Example invalid custom file feedback
@@ -61,7 +62,7 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label for="firstName">Tên</label>
-                                                    <input type="text" class="form-control" id="firstName"
+                                                    <input type="text" class="form-control" name="firstname" id="firstName"
                                                         value="{{$detailadmin->firstname}}">
                                                 </div>
                                             </div>
@@ -69,15 +70,15 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label for="lastName">Họ</label>
-                                                    <input type="text" class="form-control" id="lastName"
+                                                    <input type="text" class="form-control" name="lastname" id="lastName"
                                                         value="{{$detailadmin->lastname}}">
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="form-group mb-4">
-                                            <label for="userName">User name</label>
-                                            <input type="text" disabled class="form-control" id="userName"
+                                            <label for="userName">Username</label>
+                                            <input type="text" disabled class="form-control" name="username" id="userName"
                                                 value="{{$detailadmin->username}}">
                                         </div>
 
@@ -104,8 +105,8 @@
                                         </div>
 
                                         <div class="d-flex justify-content-end mt-5">
-                                            <a id="btn-update" href="javascript:void(0)" type="submit" class="btn btn-primary mb-2 btn-pill">Update
-                                                Profile</a>
+                                            <button id="btn-update" href="javascript:void(0)" type="submit" class="btn btn-primary mb-2 btn-pill">Update
+                                                Profile</button>
                                         </div>
                                     </form>
                                 </div>
@@ -119,24 +120,19 @@
     <script>
     $(document).ready(function() {
         var imgBase64 = "";
-
         function readFile() {
-
             if (this.files && this.files[0]) {
                 imgBase64 = "";
                 var FR = new FileReader();
-
                 FR.addEventListener("load", function(e) {
                     document.getElementById("userimg").src = e.target.result;
                     imgBase64 += e.target.result;
                     alert(imgBase64);
                 });
-
                 FR.readAsDataURL(this.files[0]);
             }
-
         }
-        document.getElementById("coverImage").addEventListener("change", readFile);
+        // document.getElementById("coverImage").addEventListener("change", readFile);
         $('#edit-information').validate({
             rules: {
                 confirmpass: {
@@ -149,10 +145,10 @@
                 }
             }
         });
-        function updateInformation(username,firstname,lastname,avatar,email,oldpass,newpass) {
+        function updateInformation(username,firstname,lastname,avatar,email,oldpass,newpass,file) {
             $.ajax({
                     url: "{{route('updateInformation')}}",
-                    method: "post",
+                    method: "get",
                     data: {
                         _token: '{{csrf_token()}}',
                         username: username,
@@ -161,7 +157,8 @@
                         avatar: avatar,
                         email: email,
                         oldpass: oldpass,
-                        newpass: newpass
+                        newpass: newpass,
+                        file: file
                     },
                     success: function(data) {
                         if(data==1) {
@@ -171,16 +168,21 @@
                     }
                 })
         }
-        $('.btn-pill').on('click',function() {
-            var username = $("#userName").val();
-            var firstname = $("#firstName").val();
-            var lastname = $("#lastName").val();
-            var avatar = imgBase64;
-            var email = $("#email").val();
-            var oldpass = $("#oldPassword").val();
-            var newpass = $("#newPassword").val();
-            updateInformation(username,firstname,lastname,avatar,email,oldpass,newpass);
-        })
+        // $('.btn-pill').on('click',function() {
+        //     var username = $("#userName").val();
+        //     var firstname = $("#firstName").val();
+        //     var lastname = $("#lastName").val();
+        //     var avatar = imgBase64;
+        //     var email = $("#email").val();
+        //     var oldpass = $("#oldPassword").val();
+        //     var newpass = $("#newPassword").val();
+
+        //     var fd = new FormData();
+        //     var files = $('#coverImage')[0].files[0];
+        //     fd.append('file',files[0]);
+
+        //     updateInformation(username,firstname,lastname,avatar,email,oldpass,newpass,fd);
+        // })
     })
     </script>
     @stop

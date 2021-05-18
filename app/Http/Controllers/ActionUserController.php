@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Account;
-use App\DanhMuc;
-use App\DetailInvoice;
+
 use App\PreInvoice;
 use Illuminate\Http\Request;
-use DB;
-use Illuminate\Support\Facades\App;
 
 class ActionUserController extends Controller
 {   
@@ -16,6 +12,7 @@ class ActionUserController extends Controller
     {
        
     }
+    
     public function default() {
         $gamenew = \App\Game::orderby('time','DESC')->take(12)->get();
         $gamerandom = \App\Game::inRandomOrder()->take(12)->get();

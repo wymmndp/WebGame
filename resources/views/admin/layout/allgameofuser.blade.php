@@ -139,6 +139,7 @@
                         linkgame = data['linkgame'];
                         coin = data['coin'];
                         iddm = data['iddm'];
+
                     }
                 })
             }
@@ -185,6 +186,7 @@
             }
             $('.accept').on('click', function() {
                 idaccept = $(this).data('idaccept');
+                alert(idaccept)
                 getInformationOfGame(idaccept);
                 $('.accept-category-btn').on('click', function() {
                     alert(username);
