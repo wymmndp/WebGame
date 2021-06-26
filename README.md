@@ -1,6 +1,10 @@
+# INTRODUCTION
 Hi, I'm Duy Phuc, student of VKU University.
+
 This project is website clone of https://www.addictinggames.com/ using Laravel Framework
+
 Main function:
+
     - Login/Register
     - Cart
     - Play game
